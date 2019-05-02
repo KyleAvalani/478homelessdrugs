@@ -26,6 +26,10 @@ The second dataset we're looking at is the Washington State Department of Commer
 
 ### What should your audience learn from your resource? Please consider specific questions that your project can answer using the data you have identified (that are related to the overarching purpose)
 
+From our resource, the audience will learn:
+
+* Which kinds of homeless people are most affected by drug overdose? This will aid Homeless Assistance programs in knowing which category of homeless people to target for rehabilitation.
+
 # Technical Description
 A technical description of the tools and datasets we'll be using.
 
