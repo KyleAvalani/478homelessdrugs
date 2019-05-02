@@ -2,7 +2,7 @@
 A written, non-technical description of our project.
 
 ### What is the purpose of your research project?
-The purpose of our project is to analyze any possible links between overdose deaths and homeless populations in WA state.
+The purpose of our project is to analyze the links between overdose and homeless populations in WA state. We will determine whether the conditions of homelessness (such as sheltered, unsheltered, and being a veteran) correlates to the prevalence of overdoses across each county.
 
 ### What other research has been done in this area? Make sure to include 3+ links to related works.
 
@@ -11,6 +11,15 @@ The purpose of our project is to analyze any possible links between overdose dea
 +
 
 ### What is the dataset you'll be working with?  Please include background on who collected the data, where you accessed it, and any additional information we should know about how this data came to be.
+
+We'll be working with two datasets.
+
+The first is *'Washington State Residents Drug Overdose Quarterly Report'* for the year of 2018. This data is made public on the Washington State Department of Health website. The deaths and hospitalization data from this report are taken from the DOH’s Death Certificates and Comprehensive Hospital Abstract Reporting System (CHARS)
+
+Link to report:
+https://www.doh.wa.gov/Portals/1/Documents/8300/wa_lhj_quarterly_report_18_1_2_pub.html
+
+The second dataset we're looking at 
 
 ### Who is your target audience?  Depending on the domain of your data, there may be a variety of audiences interested in using the dataset. You should hone in on one of these audiences.
 
