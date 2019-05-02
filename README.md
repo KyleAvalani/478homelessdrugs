@@ -24,7 +24,7 @@ The second dataset we're looking at is the Washington State Department of Commer
 
 ### Who is your target audience?  Depending on the domain of your data, there may be a variety of audiences interested in using the dataset. You should hone in on one of these audiences.
 
-Our target audience is Homeless Assistance programs. Insight into the connection between overdoses and homelessness will allow assistance programs to better allocate their health resources.
+Our target audience is homeless assistance programs. Insight into the connection between overdoses and homelessness will allow assistance programs to better allocate their health resources.
 
 ### What should your audience learn from your resource? Please consider specific questions that your project can answer using the data you have identified (that are related to the overarching purpose)
 
@@ -42,11 +42,11 @@ A technical description of the tools and datasets we'll be using.
 We are going to be publishing our report as an interactive Shiny app. 
 
 ### Do you anticipate any specific data collection / data management challenges?
-We believe we have collected enough data to analyze and gain insight from. If we find ourselves needing more data, it is certainly doable to gather more.
+For now, we think we have collected enough data to analyze and gain insight from. If we find ourselves needing more data, it is certainly feasible to gather more.
 
 We anticipate a challenge in combining our datasets into one, cohesive dataframe.
 
 ### What new technical skills will need to learn in order to complete your project?
 
 ### What major challenges do you anticipate? 
-It will be difficult to opitmize how are data is displayed. What is the best way to show counts of homelessness along with counts of overdoses on a map? We must ensure that our interactive map is not too cluttered, but at the same time, shows enough data to actually be useful.
+It will be difficult to opitmize how our data is displayed. We must ensure that our interactive map is not too cluttered, but at the same time, shows enough data to actually be useful.
