@@ -19,7 +19,10 @@ The first is *'Washington State Residents Drug Overdose Quarterly Report'* for t
 Link to report:
 https://www.doh.wa.gov/Portals/1/Documents/8300/wa_lhj_quarterly_report_18_1_2_pub.html
 
-The second dataset we're looking at 
+The second dataset we're looking at is the Washington State Department of Commerce's *'2018 Point in Time Detailed County Results'*. This data details the conditions and prevalence of homelessness across Washington counties. By the 'Homeless Housing and Assistance Act', it is required for each county in Washington State to conduct an annual point-in-time count of sheltered and unsheltered homeless persons.
+
+Link to dataset (Excel file):
+http://www.commerce.wa.gov/wp-content/uploads/2013/01/hau-2018-pit-detailed-county-results.xlsx
 
 ### Who is your target audience?  Depending on the domain of your data, there may be a variety of audiences interested in using the dataset. You should hone in on one of these audiences.
 
