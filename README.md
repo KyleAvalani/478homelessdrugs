@@ -24,11 +24,14 @@ The second dataset we're looking at is the Washington State Department of Commer
 
 ### Who is your target audience?  Depending on the domain of your data, there may be a variety of audiences interested in using the dataset. You should hone in on one of these audiences.
 
+Our target audience is Homeless Assistance programs. Insight into the connection between overdoses and homelessness will allow assistance programs to better allocate health resources.
+
 ### What should your audience learn from your resource? Please consider specific questions that your project can answer using the data you have identified (that are related to the overarching purpose)
 
 From our resource, the audience will learn:
 
 * Which kinds of homeless people are most affected by drug overdose? This will aid Homeless Assistance programs in knowing which category of homeless people to target for rehabilitation.
+* Which types of drugs are the most prevalent in the overdoses of homeless people?
 
 # Technical Description
 A technical description of the tools and datasets we'll be using.
