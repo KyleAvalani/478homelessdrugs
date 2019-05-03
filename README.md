@@ -1,5 +1,5 @@
 # Project Description
-A written, non-technical description of our project.
+_A written, non-technical description of our project._
 
 ### What is the purpose of your research project?
 The purpose of our project is to analyze the links between overdose and homeless populations in WA state. We will determine whether the conditions of homelessness (such as sheltered, unsheltered, and being a veteran) correlates to the prevalence of overdoses across each county.
@@ -36,7 +36,7 @@ From our resource, the audience will learn:
 * 
 
 # Technical Description
-A technical description of the tools and datasets we'll be using.
+_A technical description of the tools and datasets we'll be using._
 
 ### What will be the format of your final product (Shiny app, HTML page, compiled .Rmd file, etc)?
 We are going to be publishing our report as an interactive Shiny app. 
@@ -47,6 +47,7 @@ For now, we think we have collected enough data to analyze and gain insight from
 We anticipate a challenge in combining our datasets into one, cohesive dataframe.
 
 ### What new technical skills will need to learn in order to complete your project?
+We may need to learn how to use new libraries in order to clean our data or to create vizualizations to represent it. Specifically, if we choose to use a map in displaying data, we'll need to (re)learn leaflet. 
 
 ### What major challenges do you anticipate? 
 It will be difficult to opitmize how our data is displayed. We must ensure that our interactive map is not too cluttered, but at the same time, shows enough data to actually be useful.
