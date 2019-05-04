@@ -6,9 +6,9 @@ The purpose of our project is to analyze the links between overdose and homeless
 
 ### What other research has been done in this area? Make sure to include 3+ links to related works.
 
-+ https://nationalhomeless.org/wp-content/uploads/2017/06/Substance-Abuse-and-Homelessness.pdf
-+
-+
++ [Substance Abuse and Homelessness](https://nationalhomeless.org/wp-content/uploads/2017/06/Substance-Abuse-and-Homelessness.pdf) - This study was published by the National Coalition for the Homeless. The final result is meant to be informative with a mainly text and specific statistics published.
++ [Pathways to Homelessness among Older Homeless Adults: Results from the HOPE HOME Study](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4862628/?fbclid=IwAR1DppB1ZTi8VEMX3GD2BCbHRYsObr8XCudAszwO4_6zhktyfOTxO5H3Ofc#!po=68.3962) - This study tried to examine what led to homelessness for adults. The study looked at many factors which included drug use and alcohol use. This study is more broad while we hope to do something drug and alcohol specific.
++ [Seattle Homeless Needs Assessment](https://www.documentcloud.org/documents/3480319-City-of-Seattle-Homeless-Needs-Assessment-March.html) - From 2016 a general survey of the homeless conducted in Seattle. The survey includes graphics to understand various information on Seattle's homeless population. This survey includes a section on drug use.
 
 ### What is the dataset you'll be working with?  Please include background on who collected the data, where you accessed it, and any additional information we should know about how this data came to be.
 
