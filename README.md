@@ -33,7 +33,6 @@ From our resource, the audience will learn:
 * Which kinds of homeless people are most affected by drug overdose? This will aid Homeless Assistance programs in knowing which category of homeless people to target for rehabilitation.
 * Which types of drugs are the most prevalent in the overdoses of homeless people?
 * Which types of drug overdoses are prevalent in each county?
-* 
 
 # Technical Description
 _A technical description of the tools and datasets we'll be using._
