@@ -12,4 +12,5 @@ colnames(data) <- c("Year", "Age", "value")
 ggplot(data, aes(x=Year, y=value, group=Age)) + 
   geom_point(aes(color=Age)) + 
   geom_line(aes(color=Age)) + 
-  labs(title = "Abortion Rates in WA State per 1,000 Women", y="Rate (per 1,000 Women)", fill = "Abortion Rate")
+  labs(title = "Abortion Rates in WA State per 1,000 Women", y="Rate (per 1,000 Women)", fill = "Abortion Rate")+
+  theme(axis.text.x = element_text(angle=45, hjust = 1))
