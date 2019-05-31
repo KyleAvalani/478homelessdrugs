@@ -25,7 +25,16 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                               h3("Aditional Information")
                             ),
                             mainPanel(
-                              h2("About")
+                              h2("About"),
+                              p("This website is designed to provide its viewers SOMETHING IDK PUT IT HERE THO
+                                <br>"),
+                              h3("Limitations"),
+                              p("One of the greatest barriers we encountered while constructing this website and 
+                                doing our research was the scattered and incomplete data available on abortions
+                                in the US. The CDC requests information from states but their compliance is purely
+                                voluntary, along with any publication of the data themselves. Therefore, we struggled
+                                at times to find up-to-date information regarding abortion, or statistics that could
+                                be found for every state.")
                           )
                  )),
                  
