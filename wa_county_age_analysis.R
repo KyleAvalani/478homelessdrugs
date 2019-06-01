@@ -1,4 +1,8 @@
 library(dplyr)
+library(urbnmapr)
+library(ggplot2)
+library(tidyverse)
+library(sf)
 
 # Read in raw data
 raw_data <- read.csv("data/wa_by_county_and_age_rates.csv", stringsAsFactors = F)
@@ -17,43 +21,62 @@ cleaned_data$X40.44[cleaned_data$X40.44 %in% c("*", "N")] <- NA
 colnames(cleaned_data) <- c("county_name", "all_ages", "15to19","15to17","18to19",
                             "20to24", "25to29", "30to34", "35to39", "40to44")
 
+# Get County Location Data
+wa_county_data <- get_urbn_map("counties", sf = T) %>% 
+  filter(state_name == "Washington")
+  
 # Test filtering by year
 year_test <- filter(cleaned_data, substring(county_name, nchar(county_name)-3) == 2012)
-
-
-### Testing
-
-library(urbnmapr)
-library(ggplot2)
-library(tidyverse)
-library(sf)
-
-wa_counties <- get_urbn_map("counties", sf = T) %>% 
-  filter(state_name == "Washington")
-
 year_test$county_name <- substring(year_test$county_name, 0, nchar(year_test$county_name) -4)
 year_test$county_name <- paste0(year_test$county_name, " County")
 year_test <- select(year_test, county_name, all_ages)
 colnames(year_test) <- c("county_name", "rate")
 
-test <- select(big_test, -(county_name == "State Total County"))
-test <- subset(big_test, county_name != "State Total County")
+wa_map_data <- left_join(wa_county_data, year_test, by = "county_name")
 
-big_test <- left_join(year_test, wa_counties, by="county_name") %>% 
-  subset(county_name != "State Total County") %>% 
-  ggplot(aes()) +
-  geom_sf(mapping = aes(fill = rate),
-          color = "#ffffff", size = 0.05) +
-  coord_sf(datum = NA) +
-  labs(fill = "Median household income")
+ggplot() + 
+  geom_sf(wa_map_data, mapping = aes(fill = as.numeric(rate)), color="#FFFFFF") +
+  labs(fill = "Abortion Rate per 1,000 Women")
 
-
-states_sf <- get_urbn_map("states", sf = TRUE)
-
-states_sf %>% 
-  ggplot(aes()) +
-  geom_sf(fill = "grey", color = "#ffffff")
-
-wa_counties %>% 
-  ggplot(aes()) +
-  geom_sf(fill = "grey", color = "#ffffff")
+### Testing
+# 
+# wa_counties <- get_urbn_map("counties", sf = T) %>% 
+#   filter(state_name == "Washington")
+# 
+# year_test$county_name <- substring(year_test$county_name, 0, nchar(year_test$county_name) -4)
+# year_test$county_name <- paste0(year_test$county_name, " County")
+# year_test <- select(year_test, county_name, all_ages)
+# colnames(year_test) <- c("county_name", "rate")
+# 
+# big_test <- left_join(year_test, wa_counties, by="county_name") %>% 
+#   subset(county_name != "State Total County")
+#   
+#   ggplot(big_test) +
+#   geom_sf(mapping = aes(fill = rate),
+#           color = "#ffffff", size = 0.05)
+# 
+# 
+# states_sf <- get_urbn_map("states", sf = TRUE)
+# all_counties <- get_urbn_map("counties", sf = T)
+# 
+# all_counties_but_no <- filter(all_counties, state_name == "Washington")
+# 
+# states_sf %>% 
+#   ggplot(aes()) +
+#   geom_sf(fill = "grey", color = "#ffffff")
+# 
+# wa_counties %>% 
+#   ggplot() +
+#   geom_sf(fill = "grey", color = "#ffffff")
+# 
+# ggplot() + 
+#   geom_sf(all_counties, mapping = aes(), fill="grey", color="#ffffff")
+# 
+# ggplot() + 
+#   geom_sf(all_counties_but_no, mapping = aes(), fill="grey", color="#ffffff")
+# 
+# wa_data <- left_join(all_counties_but_no, year_test, by = "county_name")
+# 
+# ggplot() + 
+#   geom_sf(wa_data, mapping = aes(fill = as.numeric(rate)), color="#FFFFFF") +
+#   labs(fill = "Abortion Rate per 1,000 Women")
