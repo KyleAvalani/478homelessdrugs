@@ -1,5 +1,8 @@
 
 library("shiny")
+library(dplyr)
+library(ggplot2)
+
 
 #----------------------UI----------------------------
 ui <- navbarPage(title = "Abortions", id = "navbar",
@@ -140,6 +143,13 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                                 
                                          )
                                        )
+                                     ), 
+                                     mainPanel(
+                                       selectInput('mapagevar', label = 'Variable to Map', choices = c("all_ages","15to19")),
+                                       selectInput('mapyear', label = 'Variable to Map', choices = c("2016","2012")),
+                                       h1("Hello!"),
+                                       h1(""),
+                                       plotOutput('map')
                                      )
                             ),
                             
@@ -233,6 +243,24 @@ server <- function(input, output, session) {
     current <- isolate(which(input$navbar==tabOptions))
     updateTabsetPanel(session, 'navbar', selected=tabOptions[current+1])
   })
+  
+  output$map <- renderPlot({ #Chloropleth Map
+    
+    map_selected_data <- filter(cleaned_data, substring(county_name, nchar(county_name)-3) == input$mapyear)
+    map_selected_data$county_name <- substring(map_selected_data$county_name, 0, nchar(map_selected_data$county_name) -4)
+    map_selected_data$county_name <- paste0(map_selected_data$county_name, " County")
+    
+    map_selected_data <- select(map_selected_data, county_name, input$mapagevar)
+    colnames(map_selected_data) <- c("county_name", "rate")
+    
+    map_selected_data <- left_join(wa_county_data, map_selected_data, by = "county_name")
+    
+    p <- ggplot() +
+      geom_sf(map_selected_data, mapping = aes(fill = as.numeric(rate)), color="#FFFFFF") +
+      labs(fill = "Abortion Rate per 1,000 Women")
+    return(p)
+  })
+  
 }
 
 shinyApp(ui, server)
