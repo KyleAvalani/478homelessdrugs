@@ -2,7 +2,10 @@
 library("shiny")
 library(dplyr)
 library(ggplot2)
+library(plotly)
 
+map_year_choices <- c(1997:2016)
+map_age_choices <- c("all_ages", "15to19", "15to17", "18to19", "20to24", "25to29", "30to34", "35to39", "40to44")
 
 #----------------------UI----------------------------
 ui <- navbarPage(title = "Abortions", id = "navbar",
@@ -145,15 +148,13 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                        )
                                      ), 
                                      mainPanel(
-                                       selectInput('mapagevar', label = 'Variable to Map', choices = c("all_ages","15to19")),
-                                       selectInput('mapyear', label = 'Variable to Map', choices = c("2016","2012")),
-                                       h1("Hello!"),
-                                       h1(""),
+                                       selectInput('mapagevar', label = 'Age to Map', choices = map_age_choices),
+                                       selectInput('mapyear', label = 'Year to Map', choices = map_year_choices),
                                        plotOutput('map')
                                      )
                             ),
                             
-                            #t2p2
+                            #t3p2
                             tabPanel(title = "t3p2", value = "tab7",
                                      
                                      fluidPage(
@@ -257,8 +258,9 @@ server <- function(input, output, session) {
     
     p <- ggplot() +
       geom_sf(map_selected_data, mapping = aes(fill = as.numeric(rate)), color="#FFFFFF") +
-      labs(fill = "Abortion Rate per 1,000 Women")
-    return(p)
+      labs(fill = "Abortion Rate per 1,000 Women") +
+      scale_fill_gradientn(limits = c(0,30), colors = c("lightblue", "darkorchid1"))
+    return((p))
   })
   
 }

@@ -3,11 +3,13 @@ library(urbnmapr)
 library(ggplot2)
 library(tidyverse)
 library(sf)
+library(ggvis)
+library(plotly)
 
 # Read in raw data
-raw_data <- read.csv("data/wa_by_county_and_age_rates.csv", stringsAsFactors = F)
+raw_data <- read.csv("data/WashingtonAbortionYearly.csv", stringsAsFactors = F)
 
-#Clean data up
+e#Clean data up
 cleaned_data <- raw_data %>% select(-X, -X.1) #Remove weird extra variables 
 cleaned_data$All.Ages[cleaned_data$All.Ages %in% c("*", "N")] <- NA
 cleaned_data$X15.19[cleaned_data$X15.19 %in% c("*", "N")] <- NA
@@ -34,6 +36,8 @@ colnames(year_test) <- c("county_name", "rate")
 
 wa_map_data <- left_join(wa_county_data, year_test, by = "county_name")
 
-ggplot() + 
-  geom_sf(wa_map_data, mapping = aes(fill = as.numeric(rate)), color="#FFFFFF") +
-  labs(fill = "Abortion Rate per 1,000 Women")
+# ggplot() + 
+#   geom_sf(wa_map_data, mapping = aes(fill = as.numeric(rate)), color="#FFFFFF") +
+#   labs(fill = "Abortion Rate per 1,000 Women")
+# 
+# please_work <- ggplotly(good_good_map)
