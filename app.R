@@ -5,7 +5,8 @@ library(ggplot2)
 library(plotly)
 
 map_year_choices <- c(1997:2016)
-map_age_choices <- c("all_ages", "15to19", "15to17", "18to19", "20to24", "25to29", "30to34", "35to39", "40to44")
+map_age_choices <- list("All ages" = "all_ages", "15 to 19" = "15to19", "15 to 17" = "15to17", "18 to 19" = "18to19",
+                        "20 to 24" = "20to24", "25 to 29" = "25to29", "30 to 34" = "30to34", "35 to 39" = "35to39", "40 to 44" = "40to44")
 
 #----------------------UI----------------------------
 ui <- navbarPage(title = "Abortions", id = "navbar",
@@ -128,15 +129,15 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                      )
                             ),
                  #Tab3
-                 navbarMenu("Tab3",
+                 navbarMenu("WA Counties",
                             
                             #t3p1
-                            tabPanel(title = "t3p1", value = "tab6",
+                            tabPanel(title = "County and Age", value = "tab6",
                                      
                                      fluidPage(
                                        fluidRow(
                                          column(10,
-                                                h1("t3p1")),
+                                                h1("WA State Abortions by County and Age Group")),
                                          column(2,
                                                 icon('question-circle', class='fa-2x helper-btn'),
                                                 tags$div(class="helper-box", style="display:none",
@@ -150,7 +151,7 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                      mainPanel(
                                        selectInput('mapagevar', label = 'Age to Map', choices = map_age_choices),
                                        selectInput('mapyear', label = 'Year to Map', choices = map_year_choices),
-                                       plotOutput('map')
+                                       plotlyOutput('map')
                                      )
                             ),
                             
@@ -245,7 +246,7 @@ server <- function(input, output, session) {
     updateTabsetPanel(session, 'navbar', selected=tabOptions[current+1])
   })
   
-  output$map <- renderPlot({ #Chloropleth Map
+  output$map <- renderPlotly({ #Chloropleth Map
     
     map_selected_data <- filter(cleaned_data, substring(county_name, nchar(county_name)-3) == input$mapyear)
     map_selected_data$county_name <- substring(map_selected_data$county_name, 0, nchar(map_selected_data$county_name) -4)
@@ -257,10 +258,15 @@ server <- function(input, output, session) {
     map_selected_data <- left_join(wa_county_data, map_selected_data, by = "county_name")
     
     p <- ggplot() +
-      geom_sf(map_selected_data, mapping = aes(fill = as.numeric(rate)), color="#FFFFFF") +
+      geom_sf(map_selected_data, mapping = aes(fill = as.numeric(rate),
+                                               text = paste("<b>", county_name, "</b> had an \n abortion rate of <b>", rate, "</b> in ", input$mapyear)),
+                                               color="#FFFFFF") +
       labs(fill = "Abortion Rate per 1,000 Women") +
-      scale_fill_gradientn(limits = c(0,30), colors = c("lightblue", "darkorchid1"))
-    return((p))
+      scale_fill_gradientn(limits = c(0,65), colors = c("lightblue", "darkorchid1", "purple"))
+    return(
+      ggplotly(p, height = 400, width = 1000, tooltip = "text") %>%
+      style(hoverlabel = list(bgcolor = "white"), hoveron = "fill")
+    )
   })
   
 }
