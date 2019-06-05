@@ -1,0 +1,649 @@
+"Age","Year","Metric","weeks_pregnant","value"
+"Under 15",2016,"Count","Under 9",5
+"15-19",2016,"Count","Under 9",1128
+"20-24",2016,"Count","Under 9",3410
+"25-29",2016,"Count","Under 9",3467
+"30-34",2016,"Count","Under 9",2306
+"35-39",2016,"Count","Under 9",1300
+"40-44",2016,"Count","Under 9",481
+"45 and Over",2016,"Count","Under 9",45
+"Unknown",2016,"Count","Under 9",11
+"Under 15",2016,"Percentage","Under 9",17.9
+"15-19",2016,"Percentage","Under 9",63.2
+"20-24",2016,"Percentage","Under 9",70.2
+"25-29",2016,"Percentage","Under 9",73.5
+"30-34",2016,"Percentage","Under 9",72
+"35-39",2016,"Percentage","Under 9",72.3
+"40-44",2016,"Percentage","Under 9",75.9
+"45 and Over",2016,"Percentage","Under 9",80.4
+"Unknown",2016,"Percentage","Under 9",64.7
+"Under 15",2015,"Count","Under 9",12
+"15-19",2015,"Count","Under 9",1256
+"20-24",2015,"Count","Under 9",3578
+"25-29",2015,"Count","Under 9",3259
+"30-34",2015,"Count","Under 9",2220
+"35-39",2015,"Count","Under 9",1315
+"40-44",2015,"Count","Under 9",483
+"45 and Over",2015,"Count","Under 9",42
+"Unknown",2015,"Count","Under 9",2
+"Under 15",2015,"Percentage","Under 9",38.7
+"15-19",2015,"Percentage","Under 9",65.8
+"20-24",2015,"Percentage","Under 9",70.2
+"25-29",2015,"Percentage","Under 9",72.3
+"30-34",2015,"Percentage","Under 9",70.7
+"35-39",2015,"Percentage","Under 9",72.2
+"40-44",2015,"Percentage","Under 9",74.3
+"45 and Over",2015,"Percentage","Under 9",82.4
+"Unknown",2015,"Percentage","Under 9",0
+"Under 15",2014,"Count","Under 9",14
+"15-19",2014,"Count","Under 9",1224
+"20-24",2014,"Count","Under 9",3774
+"25-29",2014,"Count","Under 9",3278
+"30-34",2014,"Count","Under 9",2192
+"35-39",2014,"Count","Under 9",1294
+"40-44",2014,"Count","Under 9",462
+"45 and Over",2014,"Count","Under 9",49
+"Unknown",2014,"Count","Under 9",18
+"Under 15",2014,"Percentage","Under 9",36.8
+"15-19",2014,"Percentage","Under 9",64.2
+"20-24",2014,"Percentage","Under 9",68.2
+"25-29",2014,"Percentage","Under 9",71.7
+"30-34",2014,"Percentage","Under 9",72.1
+"35-39",2014,"Percentage","Under 9",72.7
+"40-44",2014,"Percentage","Under 9",76.9
+"45 and Over",2014,"Percentage","Under 9",94.2
+"Unknown",2014,"Percentage","Under 9",64.3
+"Under 15",2013,"Count","Under 9",20
+"15-19",2013,"Count","Under 9",1380
+"20-24",2013,"Count","Under 9",3804
+"25-29",2013,"Count","Under 9",3125
+"30-34",2013,"Count","Under 9",2068
+"35-39",2013,"Count","Under 9",1177
+"40-44",2013,"Count","Under 9",459
+"45 and Over",2013,"Count","Under 9",46
+"Unknown",2013,"Count","Under 9",13
+"Under 15",2013,"Percentage","Under 9",45.5
+"15-19",2013,"Percentage","Under 9",63.7
+"20-24",2013,"Percentage","Under 9",68
+"25-29",2013,"Percentage","Under 9",71
+"30-34",2013,"Percentage","Under 9",71.1
+"35-39",2013,"Percentage","Under 9",73.2
+"40-44",2013,"Percentage","Under 9",72.5
+"45 and Over",2013,"Percentage","Under 9",92
+"Unknown",2013,"Percentage","Under 9",65
+"Under 15",2012,"Count","Under 9",28
+"15-19",2012,"Count","Under 9",1524
+"20-24",2012,"Count","Under 9",3906
+"25-29",2012,"Count","Under 9",3187
+"30-34",2012,"Count","Under 9",2078
+"35-39",2012,"Count","Under 9",1194
+"40-44",2012,"Count","Under 9",485
+"45 and Over",2012,"Count","Under 9",46
+"Unknown",2012,"Count","Under 9",32
+"Under 15",2012,"Percentage","Under 9",46.7
+"15-19",2012,"Percentage","Under 9",62.5
+"20-24",2012,"Percentage","Under 9",66.6
+"25-29",2012,"Percentage","Under 9",70.2
+"30-34",2012,"Percentage","Under 9",70.8
+"35-39",2012,"Percentage","Under 9",71.5
+"40-44",2012,"Percentage","Under 9",74.6
+"45 and Over",2012,"Percentage","Under 9",85.2
+"Unknown",2012,"Percentage","Under 9",78
+"Under 15",2011,"Count","Under 9",37
+"15-19",2011,"Count","Under 9",1829
+"20-24",2011,"Count","Under 9",4270
+"25-29",2011,"Count","Under 9",3406
+"30-34",2011,"Count","Under 9",2209
+"35-39",2011,"Count","Under 9",1257
+"40-44",2011,"Count","Under 9",530
+"45 and Over",2011,"Count","Under 9",48
+"Unknown",2011,"Count","Under 9",24
+"Under 15",2011,"Percentage","Under 9",54.4
+"15-19",2011,"Percentage","Under 9",62.6
+"20-24",2011,"Percentage","Under 9",66.2
+"25-29",2011,"Percentage","Under 9",69.9
+"30-34",2011,"Percentage","Under 9",70.5
+"35-39",2011,"Percentage","Under 9",71
+"40-44",2011,"Percentage","Under 9",71.1
+"45 and Over",2011,"Percentage","Under 9",81.4
+"Unknown",2011,"Percentage","Under 9",72.7
+"Under 15",2016,"Count","9-12",11
+"15-19",2016,"Count","9-12",392
+"20-24",2016,"Count","9-12",950
+"25-29",2016,"Count","9-12",782
+"30-34",2016,"Count","9-12",531
+"35-39",2016,"Count","9-12",307
+"40-44",2016,"Count","9-12",94
+"45 and Over",2016,"Count","9-12",8
+"Unknown",2016,"Count","9-12",4
+"Under 15",2016,"Percentage","9-12",39.3
+"15-19",2016,"Percentage","9-12",21.9
+"20-24",2016,"Percentage","9-12",19.6
+"25-29",2016,"Percentage","9-12",16.6
+"30-34",2016,"Percentage","9-12",16.6
+"35-39",2016,"Percentage","9-12",17.1
+"40-44",2016,"Percentage","9-12",14.8
+"45 and Over",2016,"Percentage","9-12",14.3
+"Unknown",2016,"Percentage","9-12",0
+"Under 15",2015,"Count","9-12",13
+"15-19",2015,"Count","9-12",412
+"20-24",2015,"Count","9-12",973
+"25-29",2015,"Count","9-12",784
+"30-34",2015,"Count","9-12",567
+"35-39",2015,"Count","9-12",305
+"40-44",2015,"Count","9-12",100
+"45 and Over",2015,"Count","9-12",6
+"Unknown",2015,"Count","9-12",1
+"Under 15",2015,"Percentage","9-12",41.9
+"15-19",2015,"Percentage","9-12",21.6
+"20-24",2015,"Percentage","9-12",19.1
+"25-29",2015,"Percentage","9-12",17.4
+"30-34",2015,"Percentage","9-12",18.1
+"35-39",2015,"Percentage","9-12",16.7
+"40-44",2015,"Percentage","9-12",15.4
+"45 and Over",2015,"Percentage","9-12",11.8
+"Unknown",2015,"Percentage","9-12",0
+"Under 15",2014,"Count","9-12",14
+"15-19",2014,"Count","9-12",426
+"20-24",2014,"Count","9-12",1132
+"25-29",2014,"Count","9-12",825
+"30-34",2014,"Count","9-12",506
+"35-39",2014,"Count","9-12",304
+"40-44",2014,"Count","9-12",86
+"45 and Over",2014,"Count","9-12",1
+"Unknown",2014,"Count","9-12",6
+"Under 15",2014,"Percentage","9-12",36.8
+"15-19",2014,"Percentage","9-12",22.3
+"20-24",2014,"Percentage","9-12",20.4
+"25-29",2014,"Percentage","9-12",18.1
+"30-34",2014,"Percentage","9-12",16.7
+"35-39",2014,"Percentage","9-12",17.1
+"40-44",2014,"Percentage","9-12",14.3
+"45 and Over",2014,"Percentage","9-12",0
+"Unknown",2014,"Percentage","9-12",21.4
+"Under 15",2013,"Count","9-12",13
+"15-19",2013,"Count","9-12",501
+"20-24",2013,"Count","9-12",1168
+"25-29",2013,"Count","9-12",846
+"30-34",2013,"Count","9-12",519
+"35-39",2013,"Count","9-12",268
+"40-44",2013,"Count","9-12",107
+"45 and Over",2013,"Count","9-12",2
+"Unknown",2013,"Count","9-12",2
+"Under 15",2013,"Percentage","9-12",29.5
+"15-19",2013,"Percentage","9-12",23.1
+"20-24",2013,"Percentage","9-12",20.9
+"25-29",2013,"Percentage","9-12",19.2
+"30-34",2013,"Percentage","9-12",17.8
+"35-39",2013,"Percentage","9-12",16.7
+"40-44",2013,"Percentage","9-12",16.9
+"45 and Over",2013,"Percentage","9-12",0
+"Unknown",2013,"Percentage","9-12",0
+"Under 15",2012,"Count","9-12",16
+"15-19",2012,"Count","9-12",580
+"20-24",2012,"Count","9-12",1236
+"25-29",2012,"Count","9-12",890
+"30-34",2012,"Count","9-12",535
+"35-39",2012,"Count","9-12",307
+"40-44",2012,"Count","9-12",97
+"45 and Over",2012,"Count","9-12",4
+"Unknown",2012,"Count","9-12",3
+"Under 15",2012,"Percentage","9-12",26.7
+"15-19",2012,"Percentage","9-12",23.8
+"20-24",2012,"Percentage","9-12",21.1
+"25-29",2012,"Percentage","9-12",19.6
+"30-34",2012,"Percentage","9-12",18.2
+"35-39",2012,"Percentage","9-12",18.4
+"40-44",2012,"Percentage","9-12",14.9
+"45 and Over",2012,"Percentage","9-12",0
+"Unknown",2012,"Percentage","9-12",0
+"Under 15",2011,"Count","9-12",17
+"15-19",2011,"Count","9-12",690
+"20-24",2011,"Count","9-12",1432
+"25-29",2011,"Count","9-12",968
+"30-34",2011,"Count","9-12",566
+"35-39",2011,"Count","9-12",310
+"40-44",2011,"Count","9-12",143
+"45 and Over",2011,"Count","9-12",7
+"Unknown",2011,"Count","9-12",7
+"Under 15",2011,"Percentage","9-12",25
+"15-19",2011,"Percentage","9-12",23.6
+"20-24",2011,"Percentage","9-12",22.2
+"25-29",2011,"Percentage","9-12",19.9
+"30-34",2011,"Percentage","9-12",18.1
+"35-39",2011,"Percentage","9-12",17.5
+"40-44",2011,"Percentage","9-12",19.2
+"45 and Over",2011,"Percentage","9-12",11.9
+"Unknown",2011,"Percentage","9-12",21.2
+"Under 15",2016,"Count","13-15",11
+"15-19",2016,"Count","13-15",131
+"20-24",2016,"Count","13-15",267
+"25-29",2016,"Count","13-15",247
+"30-34",2016,"Count","13-15",196
+"35-39",2016,"Count","13-15",94
+"40-44",2016,"Count","13-15",33
+"45 and Over",2016,"Count","13-15",1
+"Unknown",2016,"Count","13-15",0
+"Under 15",2016,"Percentage","13-15",39.3
+"15-19",2016,"Percentage","13-15",7.3
+"20-24",2016,"Percentage","13-15",5.5
+"25-29",2016,"Percentage","13-15",5.2
+"30-34",2016,"Percentage","13-15",6.1
+"35-39",2016,"Percentage","13-15",5.2
+"40-44",2016,"Percentage","13-15",5.2
+"45 and Over",2016,"Percentage","13-15",0
+"Unknown",2016,"Percentage","13-15",0
+"Under 15",2015,"Count","13-15",1
+"15-19",2015,"Count","13-15",109
+"20-24",2015,"Count","13-15",292
+"25-29",2015,"Count","13-15",241
+"30-34",2015,"Count","13-15",168
+"35-39",2015,"Count","13-15",107
+"40-44",2015,"Count","13-15",42
+"45 and Over",2015,"Count","13-15",0
+"Unknown",2015,"Count","13-15",0
+"Under 15",2015,"Percentage","13-15",0
+"15-19",2015,"Percentage","13-15",5.7
+"20-24",2015,"Percentage","13-15",5.7
+"25-29",2015,"Percentage","13-15",5.3
+"30-34",2015,"Percentage","13-15",5.3
+"35-39",2015,"Percentage","13-15",5.9
+"40-44",2015,"Percentage","13-15",6.5
+"45 and Over",2015,"Percentage","13-15",0
+"Unknown",2015,"Percentage","13-15",0
+"Under 15",2014,"Count","13-15",5
+"15-19",2014,"Count","13-15",133
+"20-24",2014,"Count","13-15",309
+"25-29",2014,"Count","13-15",257
+"30-34",2014,"Count","13-15",165
+"35-39",2014,"Count","13-15",94
+"40-44",2014,"Count","13-15",26
+"45 and Over",2014,"Count","13-15",1
+"Unknown",2014,"Count","13-15",2
+"Under 15",2014,"Percentage","13-15",13.2
+"15-19",2014,"Percentage","13-15",7
+"20-24",2014,"Percentage","13-15",5.6
+"25-29",2014,"Percentage","13-15",5.6
+"30-34",2014,"Percentage","13-15",5.4
+"35-39",2014,"Percentage","13-15",5.3
+"40-44",2014,"Percentage","13-15",4.3
+"45 and Over",2014,"Percentage","13-15",0
+"Unknown",2014,"Percentage","13-15",0
+"Under 15",2013,"Count","13-15",4
+"15-19",2013,"Count","13-15",141
+"20-24",2013,"Count","13-15",325
+"25-29",2013,"Count","13-15",215
+"30-34",2013,"Count","13-15",154
+"35-39",2013,"Count","13-15",73
+"40-44",2013,"Count","13-15",33
+"45 and Over",2013,"Count","13-15",1
+"Unknown",2013,"Count","13-15",2
+"Under 15",2013,"Percentage","13-15",0
+"15-19",2013,"Percentage","13-15",6.5
+"20-24",2013,"Percentage","13-15",5.8
+"25-29",2013,"Percentage","13-15",4.9
+"30-34",2013,"Percentage","13-15",5.3
+"35-39",2013,"Percentage","13-15",4.5
+"40-44",2013,"Percentage","13-15",5.2
+"45 and Over",2013,"Percentage","13-15",0
+"Unknown",2013,"Percentage","13-15",0
+"Under 15",2012,"Count","13-15",9
+"15-19",2012,"Count","13-15",157
+"20-24",2012,"Count","13-15",356
+"25-29",2012,"Count","13-15",218
+"30-34",2012,"Count","13-15",139
+"35-39",2012,"Count","13-15",78
+"40-44",2012,"Count","13-15",37
+"45 and Over",2012,"Count","13-15",2
+"Unknown",2012,"Count","13-15",3
+"Under 15",2012,"Percentage","13-15",15
+"15-19",2012,"Percentage","13-15",6.4
+"20-24",2012,"Percentage","13-15",6.1
+"25-29",2012,"Percentage","13-15",4.8
+"30-34",2012,"Percentage","13-15",4.7
+"35-39",2012,"Percentage","13-15",4.7
+"40-44",2012,"Percentage","13-15",5.7
+"45 and Over",2012,"Percentage","13-15",0
+"Unknown",2012,"Percentage","13-15",0
+"Under 15",2011,"Count","13-15",4
+"15-19",2011,"Count","13-15",191
+"20-24",2011,"Count","13-15",367
+"25-29",2011,"Count","13-15",224
+"30-34",2011,"Count","13-15",165
+"35-39",2011,"Count","13-15",86
+"40-44",2011,"Count","13-15",31
+"45 and Over",2011,"Count","13-15",2
+"Unknown",2011,"Count","13-15",1
+"Under 15",2011,"Percentage","13-15",0
+"15-19",2011,"Percentage","13-15",6.5
+"20-24",2011,"Percentage","13-15",5.7
+"25-29",2011,"Percentage","13-15",4.6
+"30-34",2011,"Percentage","13-15",5.3
+"35-39",2011,"Percentage","13-15",4.9
+"40-44",2011,"Percentage","13-15",4.2
+"45 and Over",2011,"Percentage","13-15",0
+"Unknown",2011,"Percentage","13-15",0
+"Under 15",2016,"Count","16-19",1
+"15-19",2016,"Count","16-19",76
+"20-24",2016,"Count","16-19",141
+"25-29",2016,"Count","16-19",105
+"30-34",2016,"Count","16-19",100
+"35-39",2016,"Count","16-19",56
+"40-44",2016,"Count","16-19",14
+"45 and Over",2016,"Count","16-19",2
+"Unknown",2016,"Count","16-19",1
+"Under 15",2016,"Percentage","16-19",0
+"15-19",2016,"Percentage","16-19",4.3
+"20-24",2016,"Percentage","16-19",2.9
+"25-29",2016,"Percentage","16-19",2.2
+"30-34",2016,"Percentage","16-19",3.1
+"35-39",2016,"Percentage","16-19",3.1
+"40-44",2016,"Percentage","16-19",2.2
+"45 and Over",2016,"Percentage","16-19",0
+"Unknown",2016,"Percentage","16-19",0
+"Under 15",2015,"Count","16-19",4
+"15-19",2015,"Count","16-19",73
+"20-24",2015,"Count","16-19",147
+"25-29",2015,"Count","16-19",133
+"30-34",2015,"Count","16-19",106
+"35-39",2015,"Count","16-19",54
+"40-44",2015,"Count","16-19",14
+"45 and Over",2015,"Count","16-19",3
+"Unknown",2015,"Count","16-19",0
+"Under 15",2015,"Percentage","16-19",0
+"15-19",2015,"Percentage","16-19",3.8
+"20-24",2015,"Percentage","16-19",2.9
+"25-29",2015,"Percentage","16-19",3
+"30-34",2015,"Percentage","16-19",3.4
+"35-39",2015,"Percentage","16-19",3
+"40-44",2015,"Percentage","16-19",2.2
+"45 and Over",2015,"Percentage","16-19",0
+"Unknown",2015,"Percentage","16-19",0
+"Under 15",2014,"Count","16-19",1
+"15-19",2014,"Count","16-19",69
+"20-24",2014,"Count","16-19",177
+"25-29",2014,"Count","16-19",110
+"30-34",2014,"Count","16-19",100
+"35-39",2014,"Count","16-19",51
+"40-44",2014,"Count","16-19",13
+"45 and Over",2014,"Count","16-19",0
+"Unknown",2014,"Count","16-19",0
+"Under 15",2014,"Percentage","16-19",0
+"15-19",2014,"Percentage","16-19",3.6
+"20-24",2014,"Percentage","16-19",3.2
+"25-29",2014,"Percentage","16-19",2.4
+"30-34",2014,"Percentage","16-19",3.3
+"35-39",2014,"Percentage","16-19",2.9
+"40-44",2014,"Percentage","16-19",2.2
+"45 and Over",2014,"Percentage","16-19",0
+"Unknown",2014,"Percentage","16-19",0
+"Under 15",2013,"Count","16-19",2
+"15-19",2013,"Count","16-19",87
+"20-24",2013,"Count","16-19",171
+"25-29",2013,"Count","16-19",121
+"30-34",2013,"Count","16-19",89
+"35-39",2013,"Count","16-19",46
+"40-44",2013,"Count","16-19",24
+"45 and Over",2013,"Count","16-19",1
+"Unknown",2013,"Count","16-19",1
+"Under 15",2013,"Percentage","16-19",0
+"15-19",2013,"Percentage","16-19",4
+"20-24",2013,"Percentage","16-19",3.1
+"25-29",2013,"Percentage","16-19",2.7
+"30-34",2013,"Percentage","16-19",3.1
+"35-39",2013,"Percentage","16-19",2.9
+"40-44",2013,"Percentage","16-19",3.8
+"45 and Over",2013,"Percentage","16-19",0
+"Unknown",2013,"Percentage","16-19",0
+"Under 15",2012,"Count","16-19",4
+"15-19",2012,"Count","16-19",101
+"20-24",2012,"Count","16-19",206
+"25-29",2012,"Count","16-19",138
+"30-34",2012,"Count","16-19",95
+"35-39",2012,"Count","16-19",47
+"40-44",2012,"Count","16-19",20
+"45 and Over",2012,"Count","16-19",0
+"Unknown",2012,"Count","16-19",1
+"Under 15",2012,"Percentage","16-19",0
+"15-19",2012,"Percentage","16-19",4.1
+"20-24",2012,"Percentage","16-19",3.5
+"25-29",2012,"Percentage","16-19",3
+"30-34",2012,"Percentage","16-19",3.2
+"35-39",2012,"Percentage","16-19",2.8
+"40-44",2012,"Percentage","16-19",3.1
+"45 and Over",2012,"Percentage","16-19",0
+"Unknown",2012,"Percentage","16-19",0
+"Under 15",2011,"Count","16-19",6
+"15-19",2011,"Count","16-19",125
+"20-24",2011,"Count","16-19",212
+"25-29",2011,"Count","16-19",160
+"30-34",2011,"Count","16-19",95
+"35-39",2011,"Count","16-19",61
+"40-44",2011,"Count","16-19",19
+"45 and Over",2011,"Count","16-19",1
+"Unknown",2011,"Count","16-19",1
+"Under 15",2011,"Percentage","16-19",8.8
+"15-19",2011,"Percentage","16-19",4.3
+"20-24",2011,"Percentage","16-19",3.3
+"25-29",2011,"Percentage","16-19",3.3
+"30-34",2011,"Percentage","16-19",3
+"35-39",2011,"Percentage","16-19",3.4
+"40-44",2011,"Percentage","16-19",2.6
+"45 and Over",2011,"Percentage","16-19",0
+"Unknown",2011,"Percentage","16-19",0
+"Under 15",2016,"Count","Over 20",0
+"15-19",2016,"Count","Over 20",52
+"20-24",2016,"Count","Over 20",84
+"25-29",2016,"Count","Over 20",102
+"30-34",2016,"Count","Over 20",63
+"35-39",2016,"Count","Over 20",36
+"40-44",2016,"Count","Over 20",10
+"45 and Over",2016,"Count","Over 20",0
+"Unknown",2016,"Count","Over 20",1
+"Under 15",2016,"Percentage","Over 20",0
+"15-19",2016,"Percentage","Over 20",2.9
+"20-24",2016,"Percentage","Over 20",1.7
+"25-29",2016,"Percentage","Over 20",2.2
+"30-34",2016,"Percentage","Over 20",2
+"35-39",2016,"Percentage","Over 20",2
+"40-44",2016,"Percentage","Over 20",1.6
+"45 and Over",2016,"Percentage","Over 20",0
+"Unknown",2016,"Percentage","Over 20",0
+"Under 15",2015,"Count","Over 20",1
+"15-19",2015,"Count","Over 20",54
+"20-24",2015,"Count","Over 20",96
+"25-29",2015,"Count","Over 20",80
+"30-34",2015,"Count","Over 20",68
+"35-39",2015,"Count","Over 20",37
+"40-44",2015,"Count","Over 20",10
+"45 and Over",2015,"Count","Over 20",0
+"Unknown",2015,"Count","Over 20",0
+"Under 15",2015,"Percentage","Over 20",0
+"15-19",2015,"Percentage","Over 20",2.8
+"20-24",2015,"Percentage","Over 20",1.9
+"25-29",2015,"Percentage","Over 20",1.8
+"30-34",2015,"Percentage","Over 20",2.2
+"35-39",2015,"Percentage","Over 20",2
+"40-44",2015,"Percentage","Over 20",1.5
+"45 and Over",2015,"Percentage","Over 20",0
+"Unknown",2015,"Percentage","Over 20",0
+"Under 15",2014,"Count","Over 20",4
+"15-19",2014,"Count","Over 20",50
+"20-24",2014,"Count","Over 20",131
+"25-29",2014,"Count","Over 20",85
+"30-34",2014,"Count","Over 20",58
+"35-39",2014,"Count","Over 20",32
+"40-44",2014,"Count","Over 20",12
+"45 and Over",2014,"Count","Over 20",0
+"Unknown",2014,"Count","Over 20",1
+"Under 15",2014,"Percentage","Over 20",0
+"15-19",2014,"Percentage","Over 20",2.6
+"20-24",2014,"Percentage","Over 20",2.4
+"25-29",2014,"Percentage","Over 20",1.9
+"30-34",2014,"Percentage","Over 20",1.9
+"35-39",2014,"Percentage","Over 20",1.8
+"40-44",2014,"Percentage","Over 20",2
+"45 and Over",2014,"Percentage","Over 20",0
+"Unknown",2014,"Percentage","Over 20",0
+"Under 15",2013,"Count","Over 20",5
+"15-19",2013,"Count","Over 20",55
+"20-24",2013,"Count","Over 20",111
+"25-29",2013,"Count","Over 20",90
+"30-34",2013,"Count","Over 20",72
+"35-39",2013,"Count","Over 20",36
+"40-44",2013,"Count","Over 20",10
+"45 and Over",2013,"Count","Over 20",0
+"Unknown",2013,"Count","Over 20",2
+"Under 15",2013,"Percentage","Over 20",11.4
+"15-19",2013,"Percentage","Over 20",2.5
+"20-24",2013,"Percentage","Over 20",2
+"25-29",2013,"Percentage","Over 20",2
+"30-34",2013,"Percentage","Over 20",2.5
+"35-39",2013,"Percentage","Over 20",2.2
+"40-44",2013,"Percentage","Over 20",1.6
+"45 and Over",2013,"Percentage","Over 20",0
+"Unknown",2013,"Percentage","Over 20",0
+"Under 15",2012,"Count","Over 20",3
+"15-19",2012,"Count","Over 20",70
+"20-24",2012,"Count","Over 20",141
+"25-29",2012,"Count","Over 20",97
+"30-34",2012,"Count","Over 20",76
+"35-39",2012,"Count","Over 20",40
+"40-44",2012,"Count","Over 20",8
+"45 and Over",2012,"Count","Over 20",0
+"Unknown",2012,"Count","Over 20",2
+"Under 15",2012,"Percentage","Over 20",0
+"15-19",2012,"Percentage","Over 20",2.9
+"20-24",2012,"Percentage","Over 20",2.4
+"25-29",2012,"Percentage","Over 20",2.1
+"30-34",2012,"Percentage","Over 20",2.6
+"35-39",2012,"Percentage","Over 20",2.4
+"40-44",2012,"Percentage","Over 20",1.2
+"45 and Over",2012,"Percentage","Over 20",0
+"Unknown",2012,"Percentage","Over 20",0
+"Under 15",2011,"Count","Over 20",4
+"15-19",2011,"Count","Over 20",77
+"20-24",2011,"Count","Over 20",152
+"25-29",2011,"Count","Over 20",108
+"30-34",2011,"Count","Over 20",82
+"35-39",2011,"Count","Over 20",52
+"40-44",2011,"Count","Over 20",15
+"45 and Over",2011,"Count","Over 20",1
+"Unknown",2011,"Count","Over 20",0
+"Under 15",2011,"Percentage","Over 20",0
+"15-19",2011,"Percentage","Over 20",2.6
+"20-24",2011,"Percentage","Over 20",2.4
+"25-29",2011,"Percentage","Over 20",2.2
+"30-34",2011,"Percentage","Over 20",2.6
+"35-39",2011,"Percentage","Over 20",2.9
+"40-44",2011,"Percentage","Over 20",2
+"45 and Over",2011,"Percentage","Over 20",0
+"Unknown",2011,"Percentage","Over 20",0
+"Under 15",2016,"Count","Unknown",0
+"15-19",2016,"Count","Unknown",7
+"20-24",2016,"Count","Unknown",4
+"25-29",2016,"Count","Unknown",12
+"30-34",2016,"Count","Unknown",7
+"35-39",2016,"Count","Unknown",5
+"40-44",2016,"Count","Unknown",2
+"45 and Over",2016,"Count","Unknown",0
+"Unknown",2016,"Count","Unknown",0
+"Under 15",2016,"Percentage","Unknown",0
+"15-19",2016,"Percentage","Unknown",0.4
+"20-24",2016,"Percentage","Unknown",0
+"25-29",2016,"Percentage","Unknown",0.3
+"30-34",2016,"Percentage","Unknown",0.2
+"35-39",2016,"Percentage","Unknown",0.3
+"40-44",2016,"Percentage","Unknown",0
+"45 and Over",2016,"Percentage","Unknown",0
+"Unknown",2016,"Percentage","Unknown",0
+"Under 15",2015,"Count","Unknown",0
+"15-19",2015,"Count","Unknown",4
+"20-24",2015,"Count","Unknown",11
+"25-29",2015,"Count","Unknown",9
+"30-34",2015,"Count","Unknown",12
+"35-39",2015,"Count","Unknown",3
+"40-44",2015,"Count","Unknown",1
+"45 and Over",2015,"Count","Unknown",0
+"Unknown",2015,"Count","Unknown",0
+"Under 15",2015,"Percentage","Unknown",0
+"15-19",2015,"Percentage","Unknown",0
+"20-24",2015,"Percentage","Unknown",0.2
+"25-29",2015,"Percentage","Unknown",0.2
+"30-34",2015,"Percentage","Unknown",0.4
+"35-39",2015,"Percentage","Unknown",0
+"40-44",2015,"Percentage","Unknown",0
+"45 and Over",2015,"Percentage","Unknown",0
+"Unknown",2015,"Percentage","Unknown",0
+"Under 15",2014,"Count","Unknown",0
+"15-19",2014,"Count","Unknown",5
+"20-24",2014,"Count","Unknown",14
+"25-29",2014,"Count","Unknown",15
+"30-34",2014,"Count","Unknown",18
+"35-39",2014,"Count","Unknown",5
+"40-44",2014,"Count","Unknown",2
+"45 and Over",2014,"Count","Unknown",1
+"Unknown",2014,"Count","Unknown",1
+"Under 15",2014,"Percentage","Unknown",0
+"15-19",2014,"Percentage","Unknown",0.3
+"20-24",2014,"Percentage","Unknown",0.3
+"25-29",2014,"Percentage","Unknown",0.3
+"30-34",2014,"Percentage","Unknown",0.6
+"35-39",2014,"Percentage","Unknown",0.3
+"40-44",2014,"Percentage","Unknown",0
+"45 and Over",2014,"Percentage","Unknown",0
+"Unknown",2014,"Percentage","Unknown",0
+"Under 15",2013,"Count","Unknown",0
+"15-19",2013,"Count","Unknown",4
+"20-24",2013,"Count","Unknown",18
+"25-29",2013,"Count","Unknown",7
+"30-34",2013,"Count","Unknown",6
+"35-39",2013,"Count","Unknown",7
+"40-44",2013,"Count","Unknown",0
+"45 and Over",2013,"Count","Unknown",0
+"Unknown",2013,"Count","Unknown",0
+"Under 15",2013,"Percentage","Unknown",0
+"15-19",2013,"Percentage","Unknown",0
+"20-24",2013,"Percentage","Unknown",0.3
+"25-29",2013,"Percentage","Unknown",0.2
+"30-34",2013,"Percentage","Unknown",0.2
+"35-39",2013,"Percentage","Unknown",0.4
+"40-44",2013,"Percentage","Unknown",0
+"45 and Over",2013,"Percentage","Unknown",0
+"Unknown",2013,"Percentage","Unknown",0
+"Under 15",2012,"Count","Unknown",0
+"15-19",2012,"Count","Unknown",8
+"20-24",2012,"Count","Unknown",22
+"25-29",2012,"Count","Unknown",10
+"30-34",2012,"Count","Unknown",12
+"35-39",2012,"Count","Unknown",4
+"40-44",2012,"Count","Unknown",3
+"45 and Over",2012,"Count","Unknown",2
+"Unknown",2012,"Count","Unknown",0
+"Under 15",2012,"Percentage","Unknown",0
+"15-19",2012,"Percentage","Unknown",0.3
+"20-24",2012,"Percentage","Unknown",0.4
+"25-29",2012,"Percentage","Unknown",0.2
+"30-34",2012,"Percentage","Unknown",0.4
+"35-39",2012,"Percentage","Unknown",0
+"40-44",2012,"Percentage","Unknown",0
+"45 and Over",2012,"Percentage","Unknown",0
+"Unknown",2012,"Percentage","Unknown",0
+"Under 15",2011,"Count","Unknown",0
+"15-19",2011,"Count","Unknown",8
+"20-24",2011,"Count","Unknown",13
+"25-29",2011,"Count","Unknown",8
+"30-34",2011,"Count","Unknown",16
+"35-39",2011,"Count","Unknown",4
+"40-44",2011,"Count","Unknown",7
+"45 and Over",2011,"Count","Unknown",0
+"Unknown",2011,"Count","Unknown",0
+"Under 15",2011,"Percentage","Unknown",0
+"15-19",2011,"Percentage","Unknown",0.3
+"20-24",2011,"Percentage","Unknown",0.2
+"25-29",2011,"Percentage","Unknown",0.2
+"30-34",2011,"Percentage","Unknown",0.5
+"35-39",2011,"Percentage","Unknown",0
+"40-44",2011,"Percentage","Unknown",0.9
+"45 and Over",2011,"Percentage","Unknown",0
+"Unknown",2011,"Percentage","Unknown",0

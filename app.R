@@ -5,7 +5,7 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 source('wa_county_age_analysis.R')
-
+data <- read.csv("data/abortion_data.csv", stringsAsFactors = FALSE)
 map_year_choices <- c(1997:2016)
 map_age_choices <- list("All ages" = "all_ages", "15 to 19" = "15to19", "15 to 17" = "15to17", "18 to 19" = "18to19",
                         "20 to 24" = "20to24", "25 to 29" = "25to29", "30 to 34" = "30to34", "35 to 39" = "35to39", "40 to 44" = "40to44")
@@ -35,6 +35,7 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                 tags$li(tags$a(href="https://www.kff.org/womens-health-policy/state-indicator/abortion-rate/?currentTimeframe=0&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D", "Rates of Legal Abortion, 2015")),
                                 tags$li(tags$a(href="https://www.cdc.gov/mmwr/volumes/67/ss/ss6713a1.htm", "CDC Abortion Surveillance 2015")),
                                 tags$li(tags$a(href="https://www.guttmacher.org/state-policy/explore/overview-abortion-laws", "An Overview of Abortion Laws")),
+                                tags$li(tags$a(href="https://www.doh.wa.gov/DataandStatisticalReports/HealthStatistics/AbortionPregnancy/AbortionPregnancyTablesbyTopic?fbclid=IwAR3SEcS15GcxrUd4cTiVUundpuwUt_YyNdoV0wIiHU5A--9hK4QfSLDt1xM", "Weeks of Gestation by Age of Woman in WA State")),
                                 tags$li(tags$a(href="https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.doh.wa.gov%2FDataandStatisticalReports%2FHealthStatistics%2FAbortionPregnancy%2FAbortionPregnancyTablesbyTopic&h=AT0Ab66Ax0ng03Uoc7m4N5BqDP5YxoYSXxWQygkxO9ejzB_xGvCJ1Rp0gfNTSlsqYo6SMywjgHpEX3Kpa3m0cCcH_fpUmBffwwPLZvGgaxoKVhi6Df0-3dlOotuBkbd4T_aQAaZsaUc", "Washington State Department of Health"))
                               ),
                               h3("Aditional Information")
@@ -55,26 +56,68 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                  
                  #Tab1
                  navbarMenu(
-                   "TabOne",
+                   "Pregnancy Duration by Age",
                    
                    #Tab1 Page1
-                   tabPanel(title = "T1P1", value = "tab2",
+                   tabPanel(title = "Term of Abortion by Age", value = "tab2",
                             
                             fluidPage(
                               fluidRow(
                                 column(10,
-                                       h1("t1p1")),
+                                       h1("Duration of Pregnancy by Age of Woman in WA State")),
                                 column(2,
                                        icon('question-circle', class='fa-2x helper-btn'),
                                        tags$div(class="helper-box", style="display:none",
-                                                p("First page of tab 1")),
+                                                p("A distribution of when women get abortions during their pregnancy, depending on their age.")),
                                        actionLink('t2left', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
                                        actionLink('t2right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                        
-                                                )
-                                       )
                                 )
-                          ),
+                              ),
+                              sidebarLayout(
+                                sidebarPanel(
+                                  selectInput(
+                                    inputId = "Year",
+                                    label = strong("Year"),
+                                    choices = c("2011", "2012", "2013", "2014", "2015", "2016")
+                                  ),
+                                  checkboxGroupInput(
+                                    inputId = "Age",
+                                    label = strong("Select the Age of the Woman"),
+                                    choices = c("Under 15", "15-19", "20-24", "25-29", "30-34",
+                                                "35-39", "40-44", "45 and Over", "Unknown"),
+                                    selected = c("Under 15", "15-19", "20-24", "25-29", "30-34",
+                                                 "35-39", "40-44", "45 and Over", "Unknown")
+                                  ) ,
+                                  checkboxGroupInput(
+                                    inputId = "weeks_of_gestation",
+                                    label = strong("Weeks of Gestation"),
+                                    choices = c("Under 9", "9-12", "13-15", "16-19", "Over 20", "Unknown"),
+                                    selected = c("Under 9", "9-12", "13-15", "16-19", "Over 20", "Unknown")
+                                  ),
+                                  selectInput(
+                                    inputId = "Measure",
+                                    label = strong("Unit of Measurement"),
+                                    choices = c("Count", "Percentage")
+                                  )
+                                ),
+                                mainPanel(
+                                  plotOutput(outputId = "weeks_pregnant_by_age"),
+                                  h2("Research Question"),
+                                  p("Does the age of the woman influence how late they get their abortion (in Washington)?"),
+                                  h2("Background"),
+                                  p("Many laws aim to restrict access to late term abortions. However, it is important to consider age as a contextual variable in influencing a woman's access to an abortion. Older adults may have more independence in such a decision, which younger women do not have. From here, we can analyze whether a woman's age may determine when they are able to get an abortion. From here we can ask, is it fair to restrict women from having abortions at any point during their pregnancy?"),
+                                  h2("Methodology"),
+                                  tags$li("Pregnancies by term calculated by percent: With this, we are able to compare when women in Washington tend to get abortions, across all ages. This eliminates the influence of the fact that older women tend to have more pregnancies, therefore more abortions."),
+                                  tags$li("Pregnancies by term calculated by raw count: With this, we are able to view how which age groups tend to get the most abortions in Washington, and when."),
+                                  h2("Results"),
+                                  p("Below is the highest measure for each gestation period, along with their respective years and age groups. It is important to note that the most abortions, in terms of raw count, across all gestation periods occurs for 20-24 year olds. However, when analyzing in terms of percentage of total abortions for an age group, the under 15 age group has the highest percentage of abortions occurring late term, out of all of the age groups. Although it may be more common for a 20-24 year old to have an abortion, there is a hgiher frequency of late term abortions in women under 15."),
+                                  tableOutput(outputId = "highest_percent"),
+                                  tableOutput(outputId = "highest_count")
+                                )
+                              )
+                            )
+                   ),
                    
                    #tab1Page2
                    tabPanel(title= "tab1page2", value="tab3",
@@ -371,6 +414,44 @@ server <- function(input, output, session) {
       ggplotly(p, height = 400, width = 700, tooltip = c("text")) %>%
       style(hoverlabel = list(bgcolor = "white"), hoveron = "fill")
     )
+  })
+  
+  output$weeks_pregnant_by_age <- renderPlot({
+    plot_data <- data %>% 
+      filter(Year == input$Year) %>% 
+      filter(Metric == input$Measure) %>% 
+      filter(Age %in% input$Age) %>% 
+      filter(weeks_pregnant %in% input$weeks_of_gestation)
+    plot <- ggplot(plot_data) +
+      geom_col(mapping = aes(x = Age, y = value, fill = weeks_pregnant), position = "dodge") +
+      labs(
+        title = "Weeks of Gestation by Age",
+        x = "Age",
+        y = input$Measure,
+        fill = "Weeks Pregnant"
+      )
+    #ggplotly(plot)
+    return(plot)
+  })
+  
+  output$highest_percent <- renderTable({
+    results_data_percent <- data %>% 
+      group_by(weeks_pregnant) %>% 
+      filter(Metric == "Percentage") %>% 
+      filter(value == max(value)) %>% 
+      select(Age, Year, weeks_pregnant, value)
+    colnames(results_data_percent) <- c("Age", "Year", "Weeks Pregnant", "Percent")
+    return(results_data_percent)
+  })
+  
+  output$highest_count <- renderTable({
+    results_data_count <- data %>% 
+      group_by(weeks_pregnant) %>% 
+      filter(Metric == "Count") %>% 
+      filter(value == max(value)) %>% 
+      select(Age, Year, weeks_pregnant, value)
+    colnames(results_data_count) <- c("Age", "Year", "Weeks Pregnant", "Count")
+    return(results_data_count)
   })
 }
 
