@@ -458,7 +458,7 @@ server <- function(input, output, session) {
     issue_text(input$other_child_health_issue)
   })
   
-  output$child_health_issue_explain <- renderTable({
+  output$child_health_issue_table <- renderTable({
     issue_table
   })
 }
