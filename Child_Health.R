@@ -51,19 +51,37 @@ data <- abortions %>%
   mutate(med_teen = median(teen_RATE))
   
 access_boxplot <- function(issue) {
-  if(issue == "Education"){
+  if(issue == "Education Rank"){
     ggplot(data, aes(Level_Of_Access, ed_Rank, fill=med_ed))+geom_boxplot()+scale_fill_gradientn(colors = c("lightblue", "red"))+xlab("Level of Access")+ylab("Education Ranking")+ggtitle("Education Rank by Abortion Access")
   }else if(issue == "Adoptions"){
     ggplot(data, aes(Level_Of_Access, `ad_FY 2017`/(`POPESTIMATE2017`/1000000), fill = med_ad_rate))+geom_boxplot()+scale_fill_gradientn(colors = c("red", "lightblue"))+xlab("Level of Access")+ylab("Adoptions per Million People")+ggtitle("Adoptions per Capita by Abortion Access")
-  }else if(issue == "Foster"){  
+  }else if(issue == "Foster Children"){  
     ggplot(data, aes(Level_Of_Access, `f_FY 2017`/(`POPESTIMATE2017`/1000000), fill = med_f_rate))+geom_boxplot()+scale_fill_gradientn(colors = c("lightblue", "red"))+xlab("Level of Access")+ylab("Kids in Foster Care per Million People")+ggtitle("Foster Kids per Capita by Abortion Access")
-  }else if(issue == "Births"){
+  }else if(issue == "Birth Rate"){
     ggplot(data, aes(Level_Of_Access, `BIRTHS2017`/(`POPESTIMATE2017`/1000000), fill = med_b_rate))+geom_boxplot()+scale_fill_gradientn(colors = c("lightblue", "red"))+xlab("Level of Access")+ylab("Births per Million People")+ggtitle("Births Per Capita by Abortion Access")
-  }else if(issue == "Mortality"){
+  }else if(issue == "Infant Mortality"){
     ggplot(data, aes(Level_Of_Access, inf_mort_RATE, fill = med_inf_mort))+geom_boxplot()+scale_fill_gradientn(colors = c("lightblue", "red"))+xlab("Level of Access")+ylab("Infant Mortality Rate")+ggtitle("Infant Mortality Rate by Abortion Access")
-  }else if(issue == "Adoptions/Foster"){
+  }else if(issue == "Adoptions per Foster Child"){
     ggplot(data, aes(Level_Of_Access, `ad_FY 2017`/`f_FY 2017`, fill = med_ad_f))+geom_boxplot()+scale_fill_gradientn(colors = c("red", "lightblue"))+xlab("Level of Access")+ylab("Adoptions per Kid in Foster Care")+ggtitle("Adoptions per Foster Child by Abortion Access")
-  }else if(issue == "Teen"){
+  }else if(issue == "Teen Birth Rate"){
     ggplot(data, aes(Level_Of_Access, teen_RATE, fill = med_teen))+geom_boxplot()+scale_fill_gradientn(colors = c("lightblue", "red"))+xlab("Level of Access")+ylab("Teen Birth Rate")+ggtitle("Teen Birth Rate by Abortion Access")
+  }
+}
+
+issue_text <- function(issue) {
+  if(issue == "Education Rank"){
+    paste("Education Rank refers to the rankings by education reported by US news. States were ranked from 1 (best) to 50 (worst). The boxplot represents both the spread in Education rankings for states by abortion access and also the median education rank for each level of access.")
+  }else if(issue == "Adoptions"){
+    paste("Adoptions are shown in per capita values. The value used is the number of abortions per million people. These values are from 2017 and were obtained from the Children's Bureau.")  
+  }else if(issue == "Foster Children"){  
+    paste("Foster Children are shown in per capita values. The value used is the number of children in foster care per million people. These values are from 2017 and were obtained from the Children's Bureau.")  
+  }else if(issue == "Birth Rate"){
+    paste("Births are shown in per capita values. The value used is the number of births per million people. These values are from 2017 and were obtained from the Census.")  
+  }else if(issue == "Infant Mortality"){
+    paste("Infant Mortality refers to the rate of infant deaths. This data was obtained by the CDC.")  
+  }else if(issue == "Adoptions per Foster Child"){
+    paste("For this issue Adoptions are calculated per Foster Child. This allows for a good estimate of how many children are adopted per child in need. These values are from 2017 and were obtained from the Children's Bureau.")  
+  }else if(issue == "Teen Birth Rate"){
+    paste("Teen Birth Rate is the rate at which teens are giving birth. These values are from 2017 and were obtained from the CDC.")  
   }
 }

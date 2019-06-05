@@ -5,7 +5,8 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 source('wa_county_age_analysis.R')
-
+source("Child_Health.R")
+data <- read.csv("data/abortion_data.csv", stringsAsFactors = FALSE)
 map_year_choices <- c(1997:2016)
 map_age_choices <- list("All ages" = "all_ages", "15 to 19" = "15to19", "15 to 17" = "15to17", "18 to 19" = "18to19",
                         "20 to 24" = "20to24", "25 to 29" = "25to29", "30 to 34" = "30to34", "35 to 39" = "35to39", "40 to 44" = "40to44")
@@ -17,11 +18,11 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                  tabPanel(title = "About", value = "tab1",
                           fluidPage(fluidRow(
                             column(10,
-                                   h1("About/ Why / IDK")),
+                                   h1("An Overview of U.S. Abortions")),
                             column(2,
                                    icon('question-circle', class='fa-2x helper-btn'),
                                    tags$div(class="helper-box", style="display:none",
-                                            p('This is about page')),
+                                            p("This the is 'About' page.")),
                                    actionLink('abtleft', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
                                    actionLink('abtright', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                    
@@ -35,14 +36,18 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                 tags$li(tags$a(href="https://www.kff.org/womens-health-policy/state-indicator/abortion-rate/?currentTimeframe=0&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D", "Rates of Legal Abortion, 2015")),
                                 tags$li(tags$a(href="https://www.cdc.gov/mmwr/volumes/67/ss/ss6713a1.htm", "CDC Abortion Surveillance 2015")),
                                 tags$li(tags$a(href="https://www.guttmacher.org/state-policy/explore/overview-abortion-laws", "An Overview of Abortion Laws")),
+                                tags$li(tags$a(href="https://www.doh.wa.gov/DataandStatisticalReports/HealthStatistics/AbortionPregnancy/AbortionPregnancyTablesbyTopic?fbclid=IwAR3SEcS15GcxrUd4cTiVUundpuwUt_YyNdoV0wIiHU5A--9hK4QfSLDt1xM", "Weeks of Gestation by Age of Woman in WA State")),
                                 tags$li(tags$a(href="https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.doh.wa.gov%2FDataandStatisticalReports%2FHealthStatistics%2FAbortionPregnancy%2FAbortionPregnancyTablesbyTopic&h=AT0Ab66Ax0ng03Uoc7m4N5BqDP5YxoYSXxWQygkxO9ejzB_xGvCJ1Rp0gfNTSlsqYo6SMywjgHpEX3Kpa3m0cCcH_fpUmBffwwPLZvGgaxoKVhi6Df0-3dlOotuBkbd4T_aQAaZsaUc", "Washington State Department of Health"))
                               ),
                               h3("Aditional Information")
                             ),
                             mainPanel(
                               h2("About"),
-                              p("This website is designed to provide its viewers SOMETHING IDK PUT IT HERE THO
-                                <br>"),
+                              p("The legality and restrictiveness placed on abortion is a controversial topic in the US. The purpose of this app is to help the general public better understand the statistical trends pertaining to abortion. In doing so, we hope to help individuals better evaluate the necessity of various abortion-related laws. The following lists our areas of interest for this analysis, as well as what insight we hope to gain from said topics: 
+                                "),
+                              tags$ol(
+                                tags$li("")
+                              ),
                               h3("Limitations"),
                               p("One of the greatest barriers we encountered while constructing this website and 
                                 doing our research was the scattered and incomplete data available on abortions
@@ -55,26 +60,68 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                  
                  #Tab1
                  navbarMenu(
-                   "TabOne",
+                   "Pregnancy Duration by Age",
                    
                    #Tab1 Page1
-                   tabPanel(title = "T1P1", value = "tab2",
+                   tabPanel(title = "Term of Abortion by Age", value = "tab2",
                             
                             fluidPage(
                               fluidRow(
                                 column(10,
-                                       h1("t1p1")),
+                                       h1("Duration of Pregnancy by Age of Woman in WA State")),
                                 column(2,
                                        icon('question-circle', class='fa-2x helper-btn'),
                                        tags$div(class="helper-box", style="display:none",
-                                                p("First page of tab 1")),
+                                                p("A distribution of when women get abortions during their pregnancy, depending on their age.")),
                                        actionLink('t2left', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
                                        actionLink('t2right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                        
-                                                )
-                                       )
                                 )
-                          ),
+                              ),
+                              sidebarLayout(
+                                sidebarPanel(
+                                  selectInput(
+                                    inputId = "Year",
+                                    label = strong("Year"),
+                                    choices = c("2011", "2012", "2013", "2014", "2015", "2016")
+                                  ),
+                                  checkboxGroupInput(
+                                    inputId = "Age",
+                                    label = strong("Select the Age of the Woman"),
+                                    choices = c("Under 15", "15-19", "20-24", "25-29", "30-34",
+                                                "35-39", "40-44", "45 and Over", "Unknown"),
+                                    selected = c("Under 15", "15-19", "20-24", "25-29", "30-34",
+                                                 "35-39", "40-44", "45 and Over", "Unknown")
+                                  ) ,
+                                  checkboxGroupInput(
+                                    inputId = "weeks_of_gestation",
+                                    label = strong("Weeks of Gestation"),
+                                    choices = c("Under 9", "9-12", "13-15", "16-19", "Over 20", "Unknown"),
+                                    selected = c("Under 9", "9-12", "13-15", "16-19", "Over 20", "Unknown")
+                                  ),
+                                  selectInput(
+                                    inputId = "Measure",
+                                    label = strong("Unit of Measurement"),
+                                    choices = c("Count", "Percentage")
+                                  )
+                                ),
+                                mainPanel(
+                                  plotOutput(outputId = "weeks_pregnant_by_age"),
+                                  h2("Research Question"),
+                                  p("Does the age of the woman influence how late they get their abortion (in Washington)?"),
+                                  h2("Background"),
+                                  p("Many laws aim to restrict access to late term abortions. However, it is important to consider age as a contextual variable in influencing a woman's access to an abortion. Older adults may have more independence in such a decision, which younger women do not have. From here, we can analyze whether a woman's age may determine when they are able to get an abortion. From here we can ask, is it fair to restrict women from having abortions at any point during their pregnancy?"),
+                                  h2("Methodology"),
+                                  tags$li("Pregnancies by term calculated by percent: With this, we are able to compare when women in Washington tend to get abortions, across all ages. This eliminates the influence of the fact that older women tend to have more pregnancies, therefore more abortions."),
+                                  tags$li("Pregnancies by term calculated by raw count: With this, we are able to view how which age groups tend to get the most abortions in Washington, and when."),
+                                  h2("Results"),
+                                  p("Below is the highest measure for each gestation period, along with their respective years and age groups. It is important to note that the most abortions, in terms of raw count, across all gestation periods occurs for 20-24 year olds. However, when analyzing in terms of percentage of total abortions for an age group, the under 15 age group has the highest percentage of abortions occurring late term, out of all of the age groups. Although it may be more common for a 20-24 year old to have an abortion, there is a hgiher frequency of late term abortions in women under 15."),
+                                  tableOutput(outputId = "highest_percent"),
+                                  tableOutput(outputId = "highest_count")
+                                )
+                              )
+                            )
+                   ),
                    
                    #tab1Page2
                    tabPanel(title= "tab1page2", value="tab3",
@@ -96,15 +143,15 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                               ),
                  
                  #Tab2
-                 navbarMenu("Tab2",
+                 navbarMenu("Compared to Other Child Health",
                             
-                            #t2p1
-                            tabPanel(title = "t2p1", value = "tab4",
+                            
+                            tabPanel(title = "Abortion Access vs Other Child Health Concerns", value = "tab4",
                                      
                                      fluidPage(
                                        fluidRow(
                                          column(10,
-                                                h1("t2p1")),
+                                                h1("Abortion Access vs Other Child Health Concerns")),
                                          column(2,
                                                 icon('question-circle', class='fa-2x helper-btn'),
                                                 tags$div(class="helper-box", style="display:none",
@@ -114,7 +161,16 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                                 
                                                          )
                                                 )
-                                         )
+                                         ),
+                                     sidebarLayout(
+                                       sidebarPanel(
+                                         selectInput("other_child_health_issue", "Children's Health Issues", c("Education Rank", "Infant Mortality", "Birth Rate", "Teen Birth Rate", "Adoptions", "Foster Children", "Adoptions per Foster Child")),
+                                         textOutput("child_health_issue_explain")
+                                       ),
+                                       mainPanel(
+                                         plotOutput("child_health_issue_boxplot")
+                                       )
+                                     )
                                      ),
                             
                             #t2p2
@@ -150,7 +206,7 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                                 icon('question-circle', class='fa-2x helper-btn'),
                                                 tags$div(class="helper-box", style="display:none",
                                                          p("A map displaying WA State abortion data per county
-                                                           and by age group")),
+                                                           and by age group.")),
                                                 actionLink('t6left', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
                                                 actionLink('t6right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                                 
@@ -225,7 +281,7 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                          column(2,
                                                 icon('question-circle', class='fa-2x helper-btn'),
                                                 tags$div(class="helper-box", style="display:none",
-                                                         p("about")),
+                                                         p("Does required parental involvement correlate to rates of abortion among minors?")),
                                                 actionLink('t8left', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
                                                 actionLink('t8right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                                 
@@ -254,7 +310,8 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                          ),
                                        h2('Results'),
                                        tableOutput('p_table'),
-                                       p("Notably, at 2.85%, the 'Consent and Notice' grouping boasts the lowest average percent that minors contributed to total abortions. Similary, at 3.22%, the 'Consent' grouping boasts the second lowest percentage. An average of .41% more minors contributed to total abortions in the 'None' grouping than in the 'Consent and Notice' grouping. Thus, from this information, it's safe to assume tha")
+                                       p("Notably, at 2.85%, the 'Consent and Notice' grouping boasts the lowest average percent that minors contributed to total abortions. Similary, at 3.22%, the 'Consent' grouping boasts the second lowest percentage. An average of .78% more minors contributed to total abortions in the 'None' grouping than in the 'Consent and Notice' grouping. From this information, it's safe to say that required parental involvement does correlate to lower rates of abortion among minors."),
+                                       p("Interestingly, the 'Enjoined' grouping is associated with the highest percent of abortion among minors. This may speak to a low effectiveness of enjoining some action by court order without the backing of law.")
                                      )
                             ),
                             
@@ -268,7 +325,7 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                          column(2,
                                                 icon('question-circle', class='fa-2x helper-btn'),
                                                 tags$div(class="helper-box", style="display:none",
-                                                         p("Aboutt")),
+                                                         p("Does mandated counseling before abortion is performed correlate to rates of abortion?")),
                                                 actionLink('t9left', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
                                                 actionLink('t9right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                                 
@@ -280,7 +337,7 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                        h2('Background'),
                                        p("18 states mandate that women be given counseling prior to an abortion. For 5 states, this counseling includes information on the alleged link between abortion and breast cancer. For 13 states, this counseling includes info on the ability of a fetus to feel pain."),
                                        h2('Methodology'),
-                                       p('We looked at three variables pertaining to each state'),
+                                       p('We looked at three variables pertaining to each state:'),
                                        tags$ul(
                                          tags$li("The rate of legal abortions per 1,000 women aged 15-44 (year 2015)"),
                                          tags$li("Whether the state mandates counseling on fetal pain"),
@@ -292,7 +349,9 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                          tags$li("We used the abortion rates of each grouping to generate a box plot. We then found the average abortion rate for each grouping.")
                                        ),
                                        h2('Results'),
-                                       tableOutput('counsel_avg_rates')
+                                       tableOutput('counsel_avg_rates'),
+                                       p("The average abortion rate was 2.17 lower for states that require 'breast cancer link' counseling than in states that don't require counseling. The average abortion rate was 2.37 lower for states that require 'fetal pain' counseling than in states that don't require counseling. Overall, the states which require counseling correlate to lower rates of abortion. However, this could be because states with mandated counseling are more likely to have other restrictive abortion laws in place."),
+                                       p("Notably, we consider the state of 'New York' an outlier for the groupings of 'No Counseling' and 'No FP Counseling'. New York holds an abortion rate of 23 per every 1000 women. If this value was included in our 'no counseling' groupings, then abortion rates associated with these groupings would stand even greater.")
                                      )
                             )
                  ),
@@ -331,15 +390,15 @@ server <- function(input, output, session) {
     if (input$s_age == 'Individual Age Groups') {
       ggplot(p_inv, aes(x=p_involvement, y=rate, fill=age_group)) +
         geom_bar(stat="identity", position=position_dodge()) +
-        ylab('Percent of Total Abortions') +
+        ylab('Avg. Percent of Total Abortions') +
         xlab('Required Parental Involvement') +
-        labs(fill='Age Group')
+        labs(fill='Age Group', title="Required Parental Involvement vs. Average Abortion Rate Among Minors")
     } else if (input$s_age == 'Altogether') {
       ggplot(p_involve, aes(x=p_involvement, y=rate.minor, fill=p_involvement)) +
         geom_bar(stat="identity") +
-        ylab('Percent of Total Abortions') +
+        ylab('Avg. Percent of Total Abortions') +
         xlab('Required Parental Involvement') +
-        labs(fill='Age Group') +
+        labs(fill='Age Group', title="Required Parental Involvement vs. Average Abortion Rate Among Minors") +
         theme(legend.position = "none")
     }
   })
@@ -371,6 +430,52 @@ server <- function(input, output, session) {
       ggplotly(p, height = 400, width = 700, tooltip = c("text")) %>%
       style(hoverlabel = list(bgcolor = "white"), hoveron = "fill")
     )
+  })
+  
+  output$weeks_pregnant_by_age <- renderPlot({
+    plot_data <- data %>% 
+      filter(Year == input$Year) %>% 
+      filter(Metric == input$Measure) %>% 
+      filter(Age %in% input$Age) %>% 
+      filter(weeks_pregnant %in% input$weeks_of_gestation)
+    plot <- ggplot(plot_data) +
+      geom_col(mapping = aes(x = Age, y = value, fill = weeks_pregnant), position = "dodge") +
+      labs(
+        title = "Weeks of Gestation by Age",
+        x = "Age",
+        y = input$Measure,
+        fill = "Weeks Pregnant"
+      )
+    #ggplotly(plot)
+    return(plot)
+  })
+  
+  output$highest_percent <- renderTable({
+    results_data_percent <- data %>% 
+      group_by(weeks_pregnant) %>% 
+      filter(Metric == "Percentage") %>% 
+      filter(value == max(value)) %>% 
+      select(Age, Year, weeks_pregnant, value)
+    colnames(results_data_percent) <- c("Age", "Year", "Weeks Pregnant", "Percent")
+    return(results_data_percent)
+  })
+  
+  output$highest_count <- renderTable({
+    results_data_count <- data %>% 
+      group_by(weeks_pregnant) %>% 
+      filter(Metric == "Count") %>% 
+      filter(value == max(value)) %>% 
+      select(Age, Year, weeks_pregnant, value)
+    colnames(results_data_count) <- c("Age", "Year", "Weeks Pregnant", "Count")
+    return(results_data_count)
+  })
+  
+  output$child_health_issue_boxplot <- renderPlot({
+    access_boxplot(input$other_child_health_issue)
+  })
+  
+  output$child_health_issue_explain <- renderText({
+    issue_text(input$other_child_health_issue)
   })
 }
 

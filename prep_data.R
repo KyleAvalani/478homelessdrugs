@@ -53,18 +53,21 @@ c_counsel <- subset(legis, BCL_Counseling == 1)
 no_c_counsel <- subset(legis, BCL_Counseling == 0)
 fp_counsel <- subset(legis, FP_Counseling == 1)
 no_fp_counsel <- subset(legis, FP_Counseling == 0)
+no_counsel <- subset(legis, FP_Counseling == 0 & BCL_Counseling == 0)
 
 c_counsel['Counseling'] = 'BCL_Counseling'
 no_c_counsel['Counseling'] = 'No_BCL_Counseling'
 fp_counsel['Counseling'] = 'FP_Counseling'
 no_fp_counsel['Counseling'] = 'No_FP_Counseling'
+no_counsel['Counseling'] = 'No_Counseling'
 
-counsel <- rbind(c_counsel, no_c_counsel, fp_counsel, no_fp_counsel)
+counsel <- rbind(c_counsel, no_c_counsel, fp_counsel, no_fp_counsel, no_counsel)
 counsel$Abortion_Rate <- as.numeric(as.character(counsel$Abortion_Rate))
 counsel$Counseling[counsel$Counseling == "BCL_Counseling"] <- "Breast Cancer Link Counseling"
 counsel$Counseling[counsel$Counseling == "FP_Counseling"] <- "Fetal Pain Counseling"
 counsel$Counseling[counsel$Counseling == "No_FP_Counseling"] <- "No FP Counseling"
 counsel$Counseling[counsel$Counseling == "No_BCL_Counseling"] <- "No BCL Counseling"
+counsel$Counseling[counsel$Counseling == "No_Counseling"] <- "No Counseling"
 
 c_avgs <- group_by(counsel, Counseling) %>%
   summarize(avg_rate = mean(Abortion_Rate, na.rm = TRUE))
