@@ -32,14 +32,17 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                             sidebarPanel(
                               
                               h3("Data Resources"),
-                              tags$ol(
-                                tags$li(tags$a(href="https://www.kff.org/womens-health-policy/state-indicator/abortion-rate/?currentTimeframe=0&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D", "Rates of Legal Abortion, 2015")),
-                                tags$li(tags$a(href="https://www.cdc.gov/mmwr/volumes/67/ss/ss6713a1.htm", "CDC Abortion Surveillance 2015")),
-                                tags$li(tags$a(href="https://www.guttmacher.org/state-policy/explore/overview-abortion-laws", "An Overview of Abortion Laws")),
-                                tags$li(tags$a(href="https://www.doh.wa.gov/DataandStatisticalReports/HealthStatistics/AbortionPregnancy/AbortionPregnancyTablesbyTopic?fbclid=IwAR3SEcS15GcxrUd4cTiVUundpuwUt_YyNdoV0wIiHU5A--9hK4QfSLDt1xM", "Weeks of Gestation by Age of Woman in WA State")),
-                                tags$li(tags$a(href="https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.doh.wa.gov%2FDataandStatisticalReports%2FHealthStatistics%2FAbortionPregnancy%2FAbortionPregnancyTablesbyTopic&h=AT0Ab66Ax0ng03Uoc7m4N5BqDP5YxoYSXxWQygkxO9ejzB_xGvCJ1Rp0gfNTSlsqYo6SMywjgHpEX3Kpa3m0cCcH_fpUmBffwwPLZvGgaxoKVhi6Df0-3dlOotuBkbd4T_aQAaZsaUc", "Washington State Department of Health"))
-                              ),
-                              h3("Aditional Information"),
+                              p("Data for national rates of abortion came from the CDC's Abortion Surveillance Report."),
+                              tags$li(tags$a(href="https://www.cdc.gov/mmwr/volumes/67/ss/ss6713a1.htm", "CDC Abortion Surveillance 2015")),
+                              tags$li(tags$a(href="https://www.kff.org/womens-health-policy/state-indicator/abortion-rate/?currentTimeframe=0&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D", "Rates of Legal Abortion, 2015")),
+                              p(),
+                              p("Data for Washington abortion rates originates from the Washington State Department of Health."),
+                              tags$li(tags$a(href="https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.doh.wa.gov%2FDataandStatisticalReports%2FHealthStatistics%2FAbortionPregnancy%2FAbortionPregnancyTablesbyTopic&h=AT0Ab66Ax0ng03Uoc7m4N5BqDP5YxoYSXxWQygkxO9ejzB_xGvCJ1Rp0gfNTSlsqYo6SMywjgHpEX3Kpa3m0cCcH_fpUmBffwwPLZvGgaxoKVhi6Df0-3dlOotuBkbd4T_aQAaZsaUc", "Washington State Department of Health")),
+                              tags$li(tags$a(href="https://www.doh.wa.gov/DataandStatisticalReports/HealthStatistics/AbortionPregnancy/AbortionPregnancyTablesbyTopic?fbclid=IwAR3SEcS15GcxrUd4cTiVUundpuwUt_YyNdoV0wIiHU5A--9hK4QfSLDt1xM", "Weeks of Gestation by Age of Woman in WA State")),
+                              p(),
+                              p("Finally, our data on the restrictiveness of abortion laws (by state) comes from the Guttmacher Institute."),
+                              tags$li(tags$a(href="https://www.guttmacher.org/state-policy/explore/overview-abortion-laws", "An Overview of Abortion Laws")),
+                              h3("Additional Information"),
                               p("The team behind this project consists of students Mackenzie Hutchison, Maddi Cummins, Kyle Avalani, and Tyler Marcinyshyn.")
                             ),
                             mainPanel(
@@ -409,7 +412,8 @@ server <- function(input, output, session) {
   output$plot_counsel <- renderPlot({
     ggplot(counsel, aes(x=Counseling, y=Abortion_Rate, fill=Counseling)) +
       geom_boxplot() +
-      ylab('Abortion Rate')
+      ylab('Abortion Rate') +
+      labs(title="Type of Mandated Counseling Vs. Abortion Rates")
   })
   output$counsel_avg_rates <- renderTable(c_avgs)
   output$p_table <- renderTable(p_involve_t)
