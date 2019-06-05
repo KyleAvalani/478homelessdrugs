@@ -85,3 +85,6 @@ issue_text <- function(issue) {
     paste("Teen Birth Rate is the rate at which teens are giving birth. These values are from 2017 and were obtained from the CDC.")  
   }
 }
+
+table <- data %>% group_by(Level_Of_Access) %>% select(Level_Of_Access, starts_with("med"))
+issue_table <- unique(table)

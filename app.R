@@ -40,8 +40,18 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                               tags$li(tags$a(href="https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.doh.wa.gov%2FDataandStatisticalReports%2FHealthStatistics%2FAbortionPregnancy%2FAbortionPregnancyTablesbyTopic&h=AT0Ab66Ax0ng03Uoc7m4N5BqDP5YxoYSXxWQygkxO9ejzB_xGvCJ1Rp0gfNTSlsqYo6SMywjgHpEX3Kpa3m0cCcH_fpUmBffwwPLZvGgaxoKVhi6Df0-3dlOotuBkbd4T_aQAaZsaUc", "Washington State Department of Health")),
                               tags$li(tags$a(href="https://www.doh.wa.gov/DataandStatisticalReports/HealthStatistics/AbortionPregnancy/AbortionPregnancyTablesbyTopic?fbclid=IwAR3SEcS15GcxrUd4cTiVUundpuwUt_YyNdoV0wIiHU5A--9hK4QfSLDt1xM", "Weeks of Gestation by Age of Woman in WA State")),
                               p(),
-                              p("Finally, our data on the restrictiveness of abortion laws (by state) comes from the Guttmacher Institute."),
+                              p("Data on the restrictiveness of abortion laws (by state) comes from the Guttmacher Institute."),
                               tags$li(tags$a(href="https://www.guttmacher.org/state-policy/explore/overview-abortion-laws", "An Overview of Abortion Laws")),
+                              p(),
+                              p("Data on Levels of Abortion Access"),
+                              tags$li(tags$a(href="https://ballotpedia.org/Abortion_regulations_by_state", "Ballotpedia - Levels of Abortion Access")),
+                              p(),
+                              p("Data on other Child Health Concerns"),
+                              tags$li(tags$a(href="https://www.usnews.com/news/best-states/rankings/education", "US news - State Education Rankings")),
+                              tags$li(tags$a(href="https://www.acf.hhs.gov/cb/resource/trends-in-foster-care-and-adoption", "Children's Bureau - Adoptions and Foster Care")),
+                              tags$li(tags$a(href="https://www.cdc.gov/nchs/pressroom/sosmap/infant_mortality_rates/infant_mortality.htm","CDC - Infant Mortality Rates")),
+                              tags$li(tags$a(href="https://www.census.gov/data/tables/time-series/demo/popest/2010s-state-total.html", "Census population data")),
+                              tags$li(tags$a(href="https://www.cdc.gov/nchs/pressroom/sosmap/teen-births/teenbirths.htm", "CDC - Teen Birth Rates")),
                               h3("Additional Information"),
                               p("The team behind this project consists of students Mackenzie Hutchison, Maddi Cummins, Kyle Avalani, and Tyler Marcinyshyn.")
                             ),
@@ -128,25 +138,7 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                 )
                               )
                             )
-                   ),
-                   
-                   #tab1Page2
-                   tabPanel(title= "tab1page2", value="tab3",
-                            
-                            fluidPage(
-                              fluidRow(
-                                column(10,
-                                       h1("tab1page2")),
-                                column(2,
-                                       icon('question-circle', class='fa-2x helper-btn'),
-                                       tags$div(class="helper-box", style="display:none",
-                                                p("tab1page2aboutt")),
-                                       actionLink('t3left', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
-                                       actionLink('t3right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
-                                       
-                                                )
-                                       )
-                            ))
+                   )
                               ),
                  
                  #Tab2
@@ -162,43 +154,40 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                          column(2,
                                                 icon('question-circle', class='fa-2x helper-btn'),
                                                 tags$div(class="helper-box", style="display:none",
-                                                         p("about")),
+                                                         p("This page compares how states treat other child health issues grouped by their level of abortion access. To change the issue use the input tab on the left side panel. The boxplots are colored based on their mean values. The colors range from blue to red indicating which groups are better or worse for the issue.")),
                                                 actionLink('t4left', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
                                                 actionLink('t4right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                                 
-                                                         )
-                                                )
-                                         ),
+                                         )
+                                       )
+                                     ),
                                      sidebarLayout(
                                        sidebarPanel(
-                                         selectInput("other_child_health_issue", "Children's Health Issues", c("Education Rank", "Infant Mortality", "Birth Rate", "Teen Birth Rate", "Adoptions", "Foster Children", "Adoptions per Foster Child")),
+                                         selectInput("other_child_health_issue", "Children's Health Issues", c("Infant Mortality", "Education Rank", "Birth Rate", "Teen Birth Rate", "Adoptions", "Foster Children", "Adoptions per Foster Child")),
                                          textOutput("child_health_issue_explain")
                                        ),
                                        mainPanel(
-                                         plotOutput("child_health_issue_boxplot")
+                                         plotOutput("child_health_issue_boxplot"),
+                                         h2("Research Question"),
+                                         p("Does the level of abortion access (severely restricted, restricted, some, protected, or strongly protected) of a state relate to how they address other child health issues?"),
+                                         h2("Background"),
+                                         p("A main argument for restrictive access to abortions is a claim to be caring for the child. We were curious to see if states with restrictive access to abortions also extend their child care beyond the womb. The child health issues we decided to make our comparison against were education rank, infant mortality, rate of births, rate of teen births, rate of adoptions, foster kids per capita, and adoptions per child in foster care."),
+                                         h2("Methodology"),
+                                         p("In order to make these comparisons we first group them by their level of abortion access and then plotted the issue specific values for each state in the level with a boxplot. Our main interest was comparing the medians which box plots easily show. The boxplots are also colored by their median, access level's with medians that are better for the issue are colored in blue, while access levels with worse medians for the issue are colored in red. Graphing this as a boxplot also allows us to see the spread and quartiles of the data to help understand how realilistic the median is at representing the data."),
+                                         h2("Results"),
+                                         p("Below are the median values for each child health issue grouped by their level of access."),
+                                         tableOutput("child_health_issue_table"),
+                                         tags$li("med_ed: Each state was ranked from 1 (best) to 50 (worst), the median represents the average education ranking for each level of access. Based on the medians states with some access or either level of protected access tend to be ranked higher in education. However, the spread is pretty large for most of the levels of access so it is hard to determine if this is actually a good indicator."),
+                                         tags$li("med_ad_rate: The median adoptions per million people for each level of access. There didn't seem to be an indication that places with different levels of restrictions were more or less likely to adopt."),
+                                         tags$li("med_f_rate: The median number of foster children per million people for each level of access. There didn't seem to be an indication that places with different levels of restrictions were more or less likely to have higher numbers of foster kids."),
+                                         tags$li("med_b_rate: The median births per million people for each level of access. There didn't seem to be an indication that places with different levels of restrictions were more or less likely to have higher birth rates. Except for in severly restricted areas which are higher than the others."),
+                                         tags$li("med_inf_mort: The infant mortality rate for each level of access. The medians and spread both indicated that places with restricted and severly restricted access to abortions have higher infant mortality rates."),
+                                         tags$li("med_ad_f: The median adoptions per child in foster care for each level of access. There didn't seem to be an indication that places with different level of restrictions were more or less likely to have higher rates of adoptions per foster child."),
+                                         tags$li("med_teen: The median teen birth rate by level of access. States with higher restrictions tended to have higher rates of teen births.")
                                        )
                                      )
-                                     ),
-                            
-                            #t2p2
-                            tabPanel(title = "t2p2", value = "tab5",
-                                     
-                                     fluidPage(
-                                       fluidRow(
-                                         column(10,
-                                                h1("t2p2")),
-                                         column(2,
-                                                icon('question-circle', class='fa-2x helper-btn'),
-                                                tags$div(class="helper-box", style="display:none",
-                                                         p("Aboutt")),
-                                                actionLink('t5left', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
-                                                actionLink('t5right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
-                                                
-                                                         )
-                                                )
-                                         )
-                                     )
-                            ),
+                            )
+                 ),
                  #Tab3
                  navbarMenu("WA Counties",
                             
@@ -252,25 +241,6 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                          were less than 5 as 'NA'. This makes it somewhat difficult to be precise with rates, though
                                          in instances with such low counts of abortions the corresponding rate would be quite low
                                          anyways. These occurences are recorded as 0 in the above map.")
-                                     )
-                            ),
-                            
-                            #t3p2
-                            tabPanel(title = "t3p2", value = "tab7",
-                                     
-                                     fluidPage(
-                                       fluidRow(
-                                         column(10,
-                                                h1("t3p2")),
-                                         column(2,
-                                                icon('question-circle', class='fa-2x helper-btn'),
-                                                tags$div(class="helper-box", style="display:none",
-                                                         p("Aboutt")),
-                                                actionLink('t7left', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
-                                                actionLink('t7right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
-                                                
-                                         )
-                                       )
                                      )
                             )
                  ),
@@ -376,20 +346,20 @@ source('prep_data.R')
 server <- function(input, output, session) {
   #update active tab in navbar when arrows are clicked
   leftarrowclicks <- reactive({
-    input$abtleft+input$t2left+input$t3left+input$t4left+input$t5left+input$t6left+input$t7left+input$t8left+input$t9left
+    input$abtleft+input$t2left+input$t4left+input$t6left+input$t8left+input$t9left
   })
   rightarrowclicks <- reactive({
-    input$abtright+input$t2right+input$t3right+input$t4right+input$t5right+input$t6right+input$t7right+input$t8right+input$t9right
+    input$abtright+input$t2right+input$t4right+input$t6right+input$t8right+input$t9right
   })
   observe({
     if(leftarrowclicks() == 0) {return()}
-    tabOptions <- c('tab1', 'tab2', 'tab3', 'tab4', 'tab5', 'tab6', 'tab7', 'tab8', 'tab9')
+    tabOptions <- c('tab1', 'tab2', 'tab4', 'tab6', 'tab8', 'tab9')
     current <- isolate(which(input$navbar==tabOptions))
     updateTabsetPanel(session, 'navbar', selected=tabOptions[current-1])
   })
   observe({
     if(rightarrowclicks() == 0) {return()}
-    tabOptions <- c('tab1', 'tab2', 'tab3', 'tab4', 'tab5', 'tab6', 'tab7', 'tab8', 'tab9')
+    tabOptions <- c('tab1', 'tab2', 'tab4', 'tab6', 'tab8', 'tab9')
     current <- isolate(which(input$navbar==tabOptions))
     updateTabsetPanel(session, 'navbar', selected=tabOptions[current+1])
   })
@@ -486,6 +456,10 @@ server <- function(input, output, session) {
   
   output$child_health_issue_explain <- renderText({
     issue_text(input$other_child_health_issue)
+  })
+  
+  output$child_health_issue_explain <- renderTable({
+    issue_table
   })
 }
 
