@@ -18,11 +18,11 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                  tabPanel(title = "About", value = "tab1",
                           fluidPage(fluidRow(
                             column(10,
-                                   h1("Overview of Abortion in the United States")),
+                                   h1("An Overview of U.S. Abortions")),
                             column(2,
                                    icon('question-circle', class='fa-2x helper-btn'),
                                    tags$div(class="helper-box", style="display:none",
-                                            p('This is about page')),
+                                            p("This the is 'About' page.")),
                                    actionLink('abtleft', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
                                    actionLink('abtright', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                    
@@ -43,8 +43,11 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                             ),
                             mainPanel(
                               h2("About"),
-                              p("This website is designed to provide its viewers SOMETHING IDK PUT IT HERE THO
-                                <br>"),
+                              p("The legality and restrictiveness placed on abortion is a controversial topic in the US. The purpose of this app is to help the general public better understand the statistical trends pertaining to abortion. In doing so, we hope to help individuals better evaluate the necessity of various abortion-related laws. The following lists our areas of interest for this analysis, as well as what insight we hope to gain from said topics: 
+                                "),
+                              tags$ol(
+                                tags$li("")
+                              ),
                               h3("Limitations"),
                               p("One of the greatest barriers we encountered while constructing this website and 
                                 doing our research was the scattered and incomplete data available on abortions
