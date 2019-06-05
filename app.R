@@ -428,10 +428,12 @@ server <- function(input, output, session) {
     p <- ggplot() +
       geom_sf(map_selected_data, mapping = aes(fill = as.numeric(rate), text = text), color="#FFFFFF") +
       labs(fill = "Abortion Rate \n per 1,000 Women") +
-      scale_fill_gradientn(limits = c(0,65), colors = c("lightblue", "darkorchid1", "purple"))
+      scale_fill_gradientn(limits = c(0,65), colors = c("lightblue", "darkorchid1", "purple")) + 
+      geom_sf_text(map_selected_data, mapping = aes(label = substring(county_name, 0, nchar(county_name) - 7)), colour = "black", size = 2) +
+      theme(axis.title.x = element_blank(), axis.title.y = element_blank())
       
     return(
-      ggplotly(p, height = 400, width = 700, tooltip = c("text")) %>%
+      ggplotly(p, height = 600, width = 800, tooltip = c("text")) %>%
       style(hoverlabel = list(bgcolor = "white"), hoveron = "fill")
     )
   })
