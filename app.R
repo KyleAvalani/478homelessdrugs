@@ -39,14 +39,18 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                 tags$li(tags$a(href="https://www.doh.wa.gov/DataandStatisticalReports/HealthStatistics/AbortionPregnancy/AbortionPregnancyTablesbyTopic?fbclid=IwAR3SEcS15GcxrUd4cTiVUundpuwUt_YyNdoV0wIiHU5A--9hK4QfSLDt1xM", "Weeks of Gestation by Age of Woman in WA State")),
                                 tags$li(tags$a(href="https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.doh.wa.gov%2FDataandStatisticalReports%2FHealthStatistics%2FAbortionPregnancy%2FAbortionPregnancyTablesbyTopic&h=AT0Ab66Ax0ng03Uoc7m4N5BqDP5YxoYSXxWQygkxO9ejzB_xGvCJ1Rp0gfNTSlsqYo6SMywjgHpEX3Kpa3m0cCcH_fpUmBffwwPLZvGgaxoKVhi6Df0-3dlOotuBkbd4T_aQAaZsaUc", "Washington State Department of Health"))
                               ),
-                              h3("Aditional Information")
+                              h3("Aditional Information"),
+                              p("The team behind this project consists of students Mackenzie Hutchison, Maddi Cummins, Kyle Avalani, and Tyler Marcinyshyn.")
                             ),
                             mainPanel(
                               h2("About"),
                               p("The legality and restrictiveness placed on abortion is a controversial topic in the US. The purpose of this app is to help the general public better understand the statistical trends pertaining to abortion. In doing so, we hope to help individuals better evaluate the necessity of various abortion-related laws. The following lists our areas of interest for this analysis, as well as what insight we hope to gain from said topics: 
                                 "),
                               tags$ol(
-                                tags$li("")
+                                tags$li("Does the age of a woman influence how late they get their abortion? If a woman's age may determine when they are able to get an abortion, we can then ask if it's fair to restrict women from having abortions at any point during their pregnancy."),
+                                tags$li("How does the accessibility of abortion correlate to indicators of child health? With this information, we can explore the fairness of placing restrictions on abortion in areas with significant child health problems."),
+                                tags$li("How have abortion rates changed in a liberal state (Washington)? We can use the answer to explore how abortion rates have changed in liberal areas in times of increasingly stricter laws on abortion."),
+                                tags$li("Does required parental involvement correlate to rates of abortion among minors? Does mandated counseling before abortion is performed correlate to rates of abortion? With this information, we can evaluate the effectiveness of these restrictive abortion laws.")
                               ),
                               h3("Limitations"),
                               p("One of the greatest barriers we encountered while constructing this website and 
