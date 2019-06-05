@@ -182,8 +182,8 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                        h2("Results"),
                                        p(paste("One immediately apparent result from looking through this map is the decreasing rate of
                                          abortions across all age groups since 1997. In 1997 the abortion rate for the whole state
-                                               was sitting at <b>", cleaned_data[761,2], "</b>. By the year 2016 however, the overall
-                                               rate fell to <b>", cleaned_data[1,2], "</b>.")),
+                                               was sitting at ", cleaned_data[761,2], ". By the year 2016 however, the overall
+                                               rate fell to ", cleaned_data[1,2], ".")),
                                        p("\n Another point to note is the interesting choice in data collection by the Washington 
                                          State Department of Health to mark any abortion rates where the occurences of abortions 
                                          were less than 5 as 'NA'. This makes it somewhat difficult to be precise with rates, though
