@@ -18,7 +18,7 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                  tabPanel(title = "About", value = "tab1",
                           fluidPage(fluidRow(
                             column(10,
-                                   h1("About/ Why / IDK")),
+                                   h1("Overview of Abortion in the United States")),
                             column(2,
                                    icon('question-circle', class='fa-2x helper-btn'),
                                    tags$div(class="helper-box", style="display:none",
@@ -203,7 +203,7 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                                 icon('question-circle', class='fa-2x helper-btn'),
                                                 tags$div(class="helper-box", style="display:none",
                                                          p("A map displaying WA State abortion data per county
-                                                           and by age group")),
+                                                           and by age group.")),
                                                 actionLink('t6left', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
                                                 actionLink('t6right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                                 
@@ -278,7 +278,7 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                          column(2,
                                                 icon('question-circle', class='fa-2x helper-btn'),
                                                 tags$div(class="helper-box", style="display:none",
-                                                         p("about")),
+                                                         p("Does required parental involvement correlate to rates of abortion among minors?")),
                                                 actionLink('t8left', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
                                                 actionLink('t8right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                                 
@@ -307,7 +307,8 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                          ),
                                        h2('Results'),
                                        tableOutput('p_table'),
-                                       p("Notably, at 2.85%, the 'Consent and Notice' grouping boasts the lowest average percent that minors contributed to total abortions. Similary, at 3.22%, the 'Consent' grouping boasts the second lowest percentage. An average of .41% more minors contributed to total abortions in the 'None' grouping than in the 'Consent and Notice' grouping. Thus, from this information, it's safe to assume tha")
+                                       p("Notably, at 2.85%, the 'Consent and Notice' grouping boasts the lowest average percent that minors contributed to total abortions. Similary, at 3.22%, the 'Consent' grouping boasts the second lowest percentage. An average of .78% more minors contributed to total abortions in the 'None' grouping than in the 'Consent and Notice' grouping. From this information, it's safe to say that required parental involvement does correlate to lower rates of abortion among minors."),
+                                       p("Interestingly, the 'Enjoined' grouping is associated with the highest percent of abortion among minors. This may speak to a low effectiveness of enjoining some action by court order without the backing of law.")
                                      )
                             ),
                             
@@ -321,7 +322,7 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                          column(2,
                                                 icon('question-circle', class='fa-2x helper-btn'),
                                                 tags$div(class="helper-box", style="display:none",
-                                                         p("Aboutt")),
+                                                         p("Does mandated counseling before abortion is performed correlate to rates of abortion?")),
                                                 actionLink('t9left', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
                                                 actionLink('t9right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                                 
@@ -333,7 +334,7 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                        h2('Background'),
                                        p("18 states mandate that women be given counseling prior to an abortion. For 5 states, this counseling includes information on the alleged link between abortion and breast cancer. For 13 states, this counseling includes info on the ability of a fetus to feel pain."),
                                        h2('Methodology'),
-                                       p('We looked at three variables pertaining to each state'),
+                                       p('We looked at three variables pertaining to each state:'),
                                        tags$ul(
                                          tags$li("The rate of legal abortions per 1,000 women aged 15-44 (year 2015)"),
                                          tags$li("Whether the state mandates counseling on fetal pain"),
@@ -345,7 +346,9 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                          tags$li("We used the abortion rates of each grouping to generate a box plot. We then found the average abortion rate for each grouping.")
                                        ),
                                        h2('Results'),
-                                       tableOutput('counsel_avg_rates')
+                                       tableOutput('counsel_avg_rates'),
+                                       p("The average abortion rate was 2.17 lower for states that require 'breast cancer link' counseling than in states that don't require counseling. The average abortion rate was 2.37 lower for states that require 'fetal pain' counseling than in states that don't require counseling. Overall, the states which require counseling correlate to lower rates of abortion. However, this could be because states with mandated counseling are more likely to have other restrictive abortion laws in place."),
+                                       p("Notably, we consider the state of 'New York' an outlier for the groupings of 'No Counseling' and 'No FP Counseling'. New York holds an abortion rate of 23 per every 1000 women. If this value was included in our 'no counseling' groupings, then abortion rates associated with these groupings would stand even greater.")
                                      )
                             )
                  ),
@@ -384,15 +387,15 @@ server <- function(input, output, session) {
     if (input$s_age == 'Individual Age Groups') {
       ggplot(p_inv, aes(x=p_involvement, y=rate, fill=age_group)) +
         geom_bar(stat="identity", position=position_dodge()) +
-        ylab('Percent of Total Abortions') +
+        ylab('Avg. Percent of Total Abortions') +
         xlab('Required Parental Involvement') +
-        labs(fill='Age Group')
+        labs(fill='Age Group', title="Required Parental Involvement vs. Average Abortion Rate Among Minors")
     } else if (input$s_age == 'Altogether') {
       ggplot(p_involve, aes(x=p_involvement, y=rate.minor, fill=p_involvement)) +
         geom_bar(stat="identity") +
-        ylab('Percent of Total Abortions') +
+        ylab('Avg. Percent of Total Abortions') +
         xlab('Required Parental Involvement') +
-        labs(fill='Age Group') +
+        labs(fill='Age Group', title="Required Parental Involvement vs. Average Abortion Rate Among Minors") +
         theme(legend.position = "none")
     }
   })
