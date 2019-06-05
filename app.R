@@ -5,6 +5,7 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 source('wa_county_age_analysis.R')
+source("Child_Health.R")
 data <- read.csv("data/abortion_data.csv", stringsAsFactors = FALSE)
 map_year_choices <- c(1997:2016)
 map_age_choices <- list("All ages" = "all_ages", "15 to 19" = "15to19", "15 to 17" = "15to17", "18 to 19" = "18to19",
@@ -139,15 +140,15 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                               ),
                  
                  #Tab2
-                 navbarMenu("Tab2",
+                 navbarMenu("Compared to Other Child Health",
                             
-                            #t2p1
-                            tabPanel(title = "t2p1", value = "tab4",
+                            
+                            tabPanel(title = "Abortion Access vs Other Child Health Concerns", value = "tab4",
                                      
                                      fluidPage(
                                        fluidRow(
                                          column(10,
-                                                h1("t2p1")),
+                                                h1("Abortion Access vs Other Child Health Concerns")),
                                          column(2,
                                                 icon('question-circle', class='fa-2x helper-btn'),
                                                 tags$div(class="helper-box", style="display:none",
@@ -157,7 +158,16 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                                 
                                                          )
                                                 )
-                                         )
+                                         ),
+                                     sidebarLayout(
+                                       sidebarPanel(
+                                         selectInput("other_child_health_issue", "Children's Health Issues", c("Education Rank", "Infant Mortality", "Birth Rate", "Teen Birth Rate", "Adoptions", "Foster Children", "Adoptions per Foster Child")),
+                                         textOutput("child_health_issue_explain")
+                                       ),
+                                       mainPanel(
+                                         plotOutput("child_health_issue_boxplot")
+                                       )
+                                     )
                                      ),
                             
                             #t2p2
@@ -452,6 +462,14 @@ server <- function(input, output, session) {
       select(Age, Year, weeks_pregnant, value)
     colnames(results_data_count) <- c("Age", "Year", "Weeks Pregnant", "Count")
     return(results_data_count)
+  })
+  
+  output$child_health_issue_boxplot <- renderPlot({
+    access_boxplot(input$other_child_health_issue)
+  })
+  
+  output$child_health_issue_explain <- renderText({
+    issue_text(input$other_child_health_issue)
   })
 }
 
