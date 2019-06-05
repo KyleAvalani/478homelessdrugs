@@ -1,5 +1,6 @@
 
 library("shiny")
+library(ggplot2)
 
 #----------------------UI----------------------------
 ui <- navbarPage(title = "Abortions", id = "navbar",
@@ -22,6 +23,11 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                             sidebarPanel(
                               
                               h3("Data Resources"),
+                              tags$ol(
+                                tags$li(tags$a(href="https://www.kff.org/womens-health-policy/state-indicator/abortion-rate/?currentTimeframe=0&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D", "Rates of Legal Abortion, 2015")),
+                                tags$li(tags$a(href="https://www.cdc.gov/mmwr/volumes/67/ss/ss6713a1.htm", "CDC Abortion Surveillance 2015")),
+                                tags$li(tags$a(href="https://www.guttmacher.org/state-policy/explore/overview-abortion-laws", "An Overview of Abortion Laws"))
+                              ),
                               h3("Aditional Information")
                             ),
                             mainPanel(
@@ -155,15 +161,15 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                  ),
                  
                  #Tab4
-                 navbarMenu("Tab4",
+                 navbarMenu("Legislature",
                             
                             #t4p1
-                            tabPanel(title = "t4p1", value = "tab8",
+                            tabPanel(title = "Parental Involvement", value = "tab8",
                                      
                                      fluidPage(
                                        fluidRow(
                                          column(10,
-                                                h1("t4p1")),
+                                                h1("Parental Involvement")),
                                          column(2,
                                                 icon('question-circle', class='fa-2x helper-btn'),
                                                 tags$div(class="helper-box", style="display:none",
@@ -172,17 +178,41 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                                 actionLink('t8right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                                 
                                          )
-                                       )
+                                       ),
+                                       selectInput("s_age",
+                                                   "Select a viewing mode:",
+                                                   list("Individual Age Groups", "Altogether")),
+                                       plotOutput("plot_involve"),
+                                       h2("Research Question:"),
+                                       p("Does required parental involvement correlate to rates of abortion among minors?"),
+                                       h2('Background'),
+                                       p("37 states require some form of parental involvement in a minor's decision to have an abortion. Of these states, 26 require that one or both parents consent to the procedure. 11 require a parent to at least be notified. 5 states have parental involvement permanently enjoined by court order, but with no any law in effect."),
+                                       h2('Methodology'),
+                                       p('To produce our results, we looked at three variables pertaining to each state:'),
+                                       tags$ul(
+                                         tags$li("Number of abortions by age group (for year 2015)"),
+                                         tags$li("Total number of abortions (across all ages, 2015)"),
+                                         tags$li("Requirement of parental involvement for minors")
+                                       ),
+                                       p("For our first variable, the age groups we examine are specifically those of minors: 'Under 15', '15', '16' and '17' year olds."),
+                                       tags$ol(
+                                         tags$li("Using the number of abortions by age group and total number of abortions, we calculated the abortion rate of each age group for each state." ),
+                                         tags$li("We categorized each state into a grouping based on what type of parental involvement they require: 'consent', 'notice', 'consent and notice', 'enjoined', or 'none'."),
+                                         tags$li("For each grouping, we calculated the average percent of total abortions each age group had contributed to.")
+                                         ),
+                                       h2('Results'),
+                                       tableOutput('p_table'),
+                                       p("Notably, at 2.85%, the 'Consent and Notice' grouping boasts the lowest average percent that minors contributed to total abortions. Similary, at 3.22%, the 'Consent' grouping boasts the second lowest percentage. An average of .41% more minors contributed to total abortions in the 'None' grouping than in the 'Consent and Notice' grouping. Thus, from this information, it's safe to assume tha")
                                      )
                             ),
                             
                             #t4p2
-                            tabPanel(title = "t4p2", value = "tab9",
+                            tabPanel(title = "Mandated Counseling", value = "tab9",
                                      
                                      fluidPage(
                                        fluidRow(
                                          column(10,
-                                                h1("t4p2")),
+                                                h1("Mandated Counseling")),
                                          column(2,
                                                 icon('question-circle', class='fa-2x helper-btn'),
                                                 tags$div(class="helper-box", style="display:none",
@@ -191,7 +221,26 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                                 actionLink('t9right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                                 
                                          )
-                                       )
+                                       ),
+                                       plotOutput("plot_counsel"),
+                                       h2('Research Question'),
+                                       p("Does mandated counseling before abortion is performed correlate to rates of abortion?"),
+                                       h2('Background'),
+                                       p("18 states mandate that women be given counseling prior to an abortion. For 5 states, this counseling includes information on the alleged link between abortion and breast cancer. For 13 states, this counseling includes info on the ability of a fetus to feel pain."),
+                                       h2('Methodology'),
+                                       p('We looked at three variables pertaining to each state'),
+                                       tags$ul(
+                                         tags$li("The rate of legal abortions per 1,000 women aged 15-44 (year 2015)"),
+                                         tags$li("Whether the state mandates counseling on fetal pain"),
+                                         tags$li("Whether the state mandates counseling on the link between breast cancer and abortion")
+                                       ),
+                                       p("We then conducted the following steps:"),
+                                       tags$ol(
+                                         tags$li("We categorized each state into a grouping based on the types of counseling they require."),
+                                         tags$li("We used the abortion rates of each grouping to generate a box plot. We then found the average abortion rate for each grouping.")
+                                       ),
+                                       h2('Results'),
+                                       tableOutput('counsel_avg_rates')
                                      )
                             )
                  ),
@@ -203,6 +252,8 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
         )
 
 #-------------------------------------------------------Server----------------------------------------------------------#
+
+source('prep_data.R')
 
 server <- function(input, output, session) {
   #update active tab in navbar when arrows are clicked
@@ -224,6 +275,29 @@ server <- function(input, output, session) {
     current <- isolate(which(input$navbar==tabOptions))
     updateTabsetPanel(session, 'navbar', selected=tabOptions[current+1])
   })
+  output$plot_involve <- renderPlot({
+    if (input$s_age == 'Individual Age Groups') {
+      ggplot(p_inv, aes(x=p_involvement, y=rate, fill=age_group)) +
+        geom_bar(stat="identity", position=position_dodge()) +
+        ylab('Percent of Total Abortions') +
+        xlab('Required Parental Involvement') +
+        labs(fill='Age Group')
+    } else if (input$s_age == 'Altogether') {
+      ggplot(p_involve, aes(x=p_involvement, y=rate.minor, fill=p_involvement)) +
+        geom_bar(stat="identity") +
+        ylab('Percent of Total Abortions') +
+        xlab('Required Parental Involvement') +
+        labs(fill='Age Group') +
+        theme(legend.position = "none")
+    }
+  })
+  output$plot_counsel <- renderPlot({
+    ggplot(counsel, aes(x=Counseling, y=Abortion_Rate, fill=Counseling)) +
+      geom_boxplot() +
+      ylab('Abortion Rate')
+  })
+  output$counsel_avg_rates <- renderTable(c_avgs)
+  output$p_table <- renderTable(p_involve_t)
 }
 
 shinyApp(ui, server)
