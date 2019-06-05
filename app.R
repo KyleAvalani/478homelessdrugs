@@ -137,11 +137,12 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                      fluidPage(
                                        fluidRow(
                                          column(10,
-                                                h1("WA State Abortions by County and Age Group")),
+                                                h1("WA State Abortions per County and by Age Group")),
                                          column(2,
                                                 icon('question-circle', class='fa-2x helper-btn'),
                                                 tags$div(class="helper-box", style="display:none",
-                                                         p("about")),
+                                                         p("A map displaying WA State abortion data per county
+                                                           and by age group")),
                                                 actionLink('t6left', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
                                                 actionLink('t6right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                                 
@@ -149,9 +150,27 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                        )
                                      ), 
                                      mainPanel(
+                                       h2("Background"),
+                                       p("With the current political climate leading some states to implement increasingly stricter
+                                         laws regarding abortion rights and access, we thought it would be interesting to zoom in on
+                                         a more liberal state that respects abortion rights, to see how their abortion rates have been
+                                         changing through the years. \n"),
+                                       p("Using the interactive map below, you can explore how the rates of abortions per 1,000 women
+                                         have changed between 1997 and 2016 in Washington state. You can further filter the results by age
+                                         to see how any specific age bracket of women have changed through the years."),
                                        selectInput('mapagevar', label = 'Age to Map', choices = map_age_choices),
                                        selectInput('mapyear', label = 'Year to Map', choices = map_year_choices),
-                                       plotlyOutput('map')
+                                       plotlyOutput('map'),
+                                       h2("Analysis"),
+                                       p(paste("One immediately apparent result from looking through this map is the decreasing rate of
+                                         abortions across all age groups since 1997. In 1997 the abortion rate for the whole state
+                                               was sitting at <b>", cleaned_data[761,2], "</b>. By the year 2016 however, the overall
+                                               rate fell to <b>", cleaned_data[1,2], "</b>.")),
+                                       p("\n Another point to note is the interesting choice in data collection by the Washington 
+                                         State Department of Health to mark any abortion rates where the occurences of abortions 
+                                         were less than 5 as 'NA'. This makes it somewhat difficult to be precise with rates, though
+                                         in instances with such low counts of abortions the corresponding rate would not be very high
+                                         anyways.")
                                      )
                             ),
                             
@@ -248,23 +267,22 @@ server <- function(input, output, session) {
   
   output$map <- renderPlotly({ #Chloropleth Map
     
-    map_selected_data <- filter(cleaned_data, substring(county_name, nchar(county_name)-3) == input$mapyear)
-    map_selected_data$county_name <- substring(map_selected_data$county_name, 0, nchar(map_selected_data$county_name) -4)
+    map_selected_data <- filter(cleaned_data, substring(county_name, nchar(county_name) - 3) == input$mapyear)
+    map_selected_data$county_name <- substring(map_selected_data$county_name, 0, nchar(map_selected_data$county_name) - 4)
     map_selected_data$county_name <- paste0(map_selected_data$county_name, " County")
     
     map_selected_data <- select(map_selected_data, county_name, input$mapagevar)
     colnames(map_selected_data) <- c("county_name", "rate")
-    
     map_selected_data <- left_join(wa_county_data, map_selected_data, by = "county_name")
+    map_selected_data$text <- paste("<i> Abortion rate: </i><b>", map_selected_data$rate, "</b> \n <i>Year:</i> <b>", input$mapyear, "</b>")
     
     p <- ggplot() +
-      geom_sf(map_selected_data, mapping = aes(fill = as.numeric(rate),
-                                               text = paste("<b>", county_name, "</b> had an \n abortion rate of <b>", rate, "</b> in ", input$mapyear)),
-                                               color="#FFFFFF") +
-      labs(fill = "Abortion Rate per 1,000 Women") +
+      geom_sf(map_selected_data, mapping = aes(fill = as.numeric(rate), text = text), color="#FFFFFF") +
+      labs(fill = "Abortion Rate \n per 1,000 Women") +
       scale_fill_gradientn(limits = c(0,65), colors = c("lightblue", "darkorchid1", "purple"))
+      
     return(
-      ggplotly(p, height = 400, width = 1000, tooltip = "text") %>%
+      ggplotly(p, height = 400, width = 1000, tooltip = c("text")) %>%
       style(hoverlabel = list(bgcolor = "white"), hoveron = "fill")
     )
   })
