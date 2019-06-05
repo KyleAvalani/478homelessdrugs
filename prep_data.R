@@ -2,6 +2,7 @@ legis <- read.csv("data/legislature.csv")
 library(dplyr)
 library(tidyr)
 
+# Functions for removing the numbers in parentheses from data entries 
 short <- function(value) {
   value <- strsplit(value, " ")
   value <- value[[1]][1]
@@ -12,6 +13,7 @@ shorten <- function(list) {
   list <- sapply(list, short)
   return(list)
 }
+
 prev <- apply(legis[8:13],2, shorten)
 print(prev)
 legis <- cbind(legis[1:7], apply(legis[8:13],2, shorten))

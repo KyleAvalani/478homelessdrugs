@@ -409,7 +409,8 @@ server <- function(input, output, session) {
   output$plot_counsel <- renderPlot({
     ggplot(counsel, aes(x=Counseling, y=Abortion_Rate, fill=Counseling)) +
       geom_boxplot() +
-      ylab('Abortion Rate')
+      ylab('Abortion Rate') +
+      labs(title="Type of Mandated Counseling Vs. Abortion Rates")
   })
   output$counsel_avg_rates <- renderTable(c_avgs)
   output$p_table <- renderTable(p_involve_t)
