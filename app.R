@@ -34,7 +34,8 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                               tags$ol(
                                 tags$li(tags$a(href="https://www.kff.org/womens-health-policy/state-indicator/abortion-rate/?currentTimeframe=0&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D", "Rates of Legal Abortion, 2015")),
                                 tags$li(tags$a(href="https://www.cdc.gov/mmwr/volumes/67/ss/ss6713a1.htm", "CDC Abortion Surveillance 2015")),
-                                tags$li(tags$a(href="https://www.guttmacher.org/state-policy/explore/overview-abortion-laws", "An Overview of Abortion Laws"))
+                                tags$li(tags$a(href="https://www.guttmacher.org/state-policy/explore/overview-abortion-laws", "An Overview of Abortion Laws")),
+                                tags$li(tags$a(href="https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.doh.wa.gov%2FDataandStatisticalReports%2FHealthStatistics%2FAbortionPregnancy%2FAbortionPregnancyTablesbyTopic&h=AT0Ab66Ax0ng03Uoc7m4N5BqDP5YxoYSXxWQygkxO9ejzB_xGvCJ1Rp0gfNTSlsqYo6SMywjgHpEX3Kpa3m0cCcH_fpUmBffwwPLZvGgaxoKVhi6Df0-3dlOotuBkbd4T_aQAaZsaUc", "Washington State Department of Health"))
                               ),
                               h3("Aditional Information")
                             ),
@@ -157,6 +158,8 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                        )
                                      ), 
                                      mainPanel(
+                                       h2("Research Question"),
+                                       p("How have abortion rates changed in a liberal state?"),
                                        h2("Background"),
                                        p("With the current political climate leading some states to implement increasingly stricter
                                          laws regarding abortion rights and access, we thought it would be interesting to zoom in on
@@ -168,7 +171,15 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                        selectInput('mapagevar', label = 'Age to Map', choices = map_age_choices),
                                        selectInput('mapyear', label = 'Year to Map', choices = map_year_choices),
                                        plotlyOutput('map'),
-                                       h2("Analysis"),
+                                       h2("Methodology"),
+                                       p('We took a look at abortion rates pertaining to each county in WA and then
+                                         conducted the following steps:'),
+                                       tags$ol(
+                                         tags$li("We merged every available table of county data."),
+                                         tags$li("We then cleaned up the data and added summary statistics."),
+                                         tags$li("Finally, we merged the data with a list of shapefile data for WA counties and plotted it all to a map.")
+                                       ),
+                                       h2("Results"),
                                        p(paste("One immediately apparent result from looking through this map is the decreasing rate of
                                          abortions across all age groups since 1997. In 1997 the abortion rate for the whole state
                                                was sitting at <b>", cleaned_data[761,2], "</b>. By the year 2016 however, the overall
@@ -176,8 +187,8 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                        p("\n Another point to note is the interesting choice in data collection by the Washington 
                                          State Department of Health to mark any abortion rates where the occurences of abortions 
                                          were less than 5 as 'NA'. This makes it somewhat difficult to be precise with rates, though
-                                         in instances with such low counts of abortions the corresponding rate would not be very high
-                                         anyways.")
+                                         in instances with such low counts of abortions the corresponding rate would be quite low
+                                         anyways. These occurences are recorded as 0 in the above map.")
                                      )
                             ),
                             
@@ -357,7 +368,7 @@ server <- function(input, output, session) {
       scale_fill_gradientn(limits = c(0,65), colors = c("lightblue", "darkorchid1", "purple"))
       
     return(
-      ggplotly(p, height = 400, width = 1000, tooltip = c("text")) %>%
+      ggplotly(p, height = 400, width = 700, tooltip = c("text")) %>%
       style(hoverlabel = list(bgcolor = "white"), hoveron = "fill")
     )
   })
