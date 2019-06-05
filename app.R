@@ -202,7 +202,9 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                                 icon('question-circle', class='fa-2x helper-btn'),
                                                 tags$div(class="helper-box", style="display:none",
                                                          p("A map displaying WA State abortion data per county
-                                                           and by age group.")),
+                                                           and by age group. Hovering over counties will display
+                                                           their abortion rates and the year selected, while hovering
+                                                           over the county name while display the name in a larger text.")),
                                                 actionLink('t6left', class = 'larrow', icon=icon('arrow-left', class='fa-2x'), label=NULL),
                                                 actionLink('t6right', class = 'rarrow', icon=icon('arrow-right', class='fa-2x'), label=NULL)
                                                 
