@@ -42,7 +42,7 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                               p(),
                               p("Finally, our data on the restrictiveness of abortion laws (by state) comes from the Guttmacher Institute."),
                               tags$li(tags$a(href="https://www.guttmacher.org/state-policy/explore/overview-abortion-laws", "An Overview of Abortion Laws")),
-                              h3("Aditional Information"),
+                              h3("Additional Information"),
                               p("The team behind this project consists of students Mackenzie Hutchison, Maddi Cummins, Kyle Avalani, and Tyler Marcinyshyn.")
                             ),
                             mainPanel(
