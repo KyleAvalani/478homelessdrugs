@@ -225,7 +225,8 @@ ui <- navbarPage(title = "Abortions", id = "navbar",
                                        selectInput('mapagevar', label = 'Age to Map', choices = map_age_choices),
                                        selectInput('mapyear', label = 'Year to Map', choices = map_year_choices),
                                        plotlyOutput('map'),
-                                       h2("Methodology"),
+                                       p("\n"),
+                                       h2("\n Methodology"),
                                        p('We took a look at abortion rates pertaining to each county in WA and then
                                          conducted the following steps:'),
                                        tags$ol(
@@ -409,7 +410,7 @@ server <- function(input, output, session) {
       theme(axis.title.x = element_blank(), axis.title.y = element_blank())
       
     return(
-      ggplotly(p, height = 600, width = 800, tooltip = c("text")) %>%
+      ggplotly(p, height = 400, width = 800, tooltip = c("text")) %>%
       style(hoverlabel = list(bgcolor = "white"), hoveron = "fill")
     )
   })
